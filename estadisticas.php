@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/tabla.css">
     
-    <script type="text/javascript" src="loader.js"></script>
+    <script type="text/javascript" src="js/loader.js"></script>
     
     <!--<script type="text/javascript">
       
@@ -141,7 +141,7 @@
                                 if($local=='San Felipe'){
                                     echo '<p align="center" style="color:black">Porcentaje de personas padecientes '
                                     . 'de enfermedades cronicas de la localidad de San Felipe</p>';
-                                    include "GraficoLA.php";
+                                    include "GraficoSF.php";
                                 }
                             } 
                         ?>
@@ -173,7 +173,7 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
-    
+
     
   </body>
 </html>
