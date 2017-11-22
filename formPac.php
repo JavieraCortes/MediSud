@@ -118,10 +118,7 @@
             <p>Para el ingreso de un nuevo Paciente debe completar todos los datos solicitados a continuación.</p>
             <hr class="bottom-line">
           </div>
-          <div id="sendmessage">Paciente Registrado</div>
-          <div id="errormessage"></div>
-          
-          
+
           <form action="formPac.php" method="post" role="form" class="contactForm" onsubmit="return validacion()">
               <div class="col-md-6 col-sm-6 col-xs-12 left">
                 <div class="form-group">
