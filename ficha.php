@@ -58,14 +58,17 @@
                                 <div class="feature-info">
 
                                     <div class="row">                    
-                                      <div class="col-md-3 col-sm-3 col-xs-3 left">
-                                             <a href="controles.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Controles</button></a>
+                                      <div align="center" class="col-md-3 col-sm-3 col-xs-3">
+                                             <a href="controles.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ver Controles</button></a>
                                       </div>
-                                      <div class="col-md-3 col-sm-3 col-xs-3 left">
+                                     <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
+                                             <a href = "formControl.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ingresar Control</button></a>
+                                      </div>
+                                      <div align="center" class="col-md-3 col-sm-4 col-xs-3 center">
+                                            <a href="urgencia.php?urgencia='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ingresar Urgencia</button></a>
+                                      </div>
+                                      <div align="center" class="col-md-3 col-sm-4 col-xs-3 center">
                                              <a href="enfermedad.php?ficha='.$row["Rut"].'"><button type="button" class="btn btn-primary">Añadir E.Crónica</button></a>
-                                      </div>
-                                      <div class="col-md-3 col-sm-3 col-xs-3 left">
-                                            <a href="urgencia.php?urgencia='.$row["Rut"].'"><button type="button" class="btn btn-primary">Urgencia</button></a>
                                       </div>
                                   </div>
                                     <br>
@@ -86,9 +89,7 @@
                                             Altura: '.$row['Altura'].'<br>
                                             Peso: '. $row['Peso'].'<br>
                                             IMC: '.$imc.'<br>
-                                            Enfermedades Cronicas:<br>
                                             Alergias:<br>
-                                            Medicamentos:<br><br>
                                       </div>
                                   </div>
 

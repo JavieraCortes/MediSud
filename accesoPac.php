@@ -32,8 +32,8 @@ echo '<!DOCTYPE html>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="pacientes.php">Mi Ficha</a></li>
-          <li><a href="estadisticas.php">Controles</a></li>  
+          <li><a href="mificha.php">Mi Ficha</a></li>
+          <li><a href="controles.php">Controles</a></li>  
         </ul>
         </div>
       </div>
