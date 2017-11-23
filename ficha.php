@@ -64,8 +64,8 @@
                                       <div class="col-md-3 col-sm-3 col-xs-3 left">
                                              <a href="enfermedad.php?ficha='.$row["Rut"].'"><button type="button" class="btn btn-primary">Añadir E.Crónica</button></a>
                                       </div>
-                                      <div class="col-md-5 col-sm-5 col-xs-5 left">
-                                            <button type="button" class="btn btn-primary">Primary</button> 
+                                      <div class="col-md-3 col-sm-3 col-xs-3 left">
+                                            <a href="urgencia.php?urgencia='.$row["Rut"].'"><button type="button" class="btn btn-primary">Urgencia</button></a>
                                       </div>
                                   </div>
                                     <br>

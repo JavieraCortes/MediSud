@@ -190,7 +190,7 @@ if($result->num_rows>0){
             $indicacion= $_POST['indicacion'];
             $egreso= $_POST['egreso'];  
             require "conexion.php";            
-            $sql= "Insert into control (Rut, motivo ,fecha, diagnostico, complemento, procedimiento, indicacion, egreso) values ('$run','$motconsulta', '$$fecha_hora_actual', '$diagnostico', '$complemento', '$procedimiento', '$indicacion', '$egreso')";
+            $sql= "Insert into control (Rut, motivo ,fecha, diagnostico, complemento, procedimiento, indicacion, egreso) values ('$run','$motconsulta', '$fecha_hora_actual', '$diagnostico', '$complemento', '$procedimiento', '$indicacion', '$egreso')";
             $result = $conn->query($sql);
             $conn->close();
             header('Location: /MediSud/pacientes.php');

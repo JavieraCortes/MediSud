@@ -32,7 +32,7 @@ echo '<!DOCTYPE html>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="pacientes.php">Mi Ficha</a></li>
+          <li><a href="../pacientes.php">Mi Ficha</a></li>
           <li><a href="estadisticas.php">Controles</a></li>
           <li><a href="formPac.php">Ingresar Paciente</a></li>    
         </ul>

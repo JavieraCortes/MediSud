@@ -261,7 +261,7 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
-    <script src="Validacion.js"></script>
+    <script src="js/Validacion.js"></script>
     
   </body>
 </html>
