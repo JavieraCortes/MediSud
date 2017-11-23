@@ -10,16 +10,8 @@
     <link rel="stylesheet" type="text/css" href="css/imagehover.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <script type="text/javascript">
-        
-    </script>
-
   </head>
   <body>
-      <div class="error">
-          <span>Datos de Ingreso no Validos, Ingreselos nuevamente</span>
-          
-      </div>
     <!--Navigation bar-->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -60,13 +52,6 @@
                       <input class="form-control" placeholder="Contraseña" name="contra" type="password" autocomplete="off" />
                   </div>
                   <div class="row">
-                      <!--<div class="col-xs-12">
-                          <div class="checkbox icheck">
-                              <label>
-                                <input type="checkbox" id="loginrem" > Recordarme
-                              </label>
-                          </div>
-                      </div>-->
                       <div class="col-xs-12">
                           <button type="submit" id="boton" name="boton" class="btn btn-green btn-block btn-flat">Ingresar</button>
                       </div>
@@ -79,17 +64,53 @@
       </div>
     </div>
     <!--/ Modal box-->
-    <!--Banner-->
-    <div class="banner">
-      <div class="bg-color">
-        <div class="container">
-          <div class="row">
-
+    <!--Courses-->
+    <section id ="courses" class="section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="header-section text-center">
+            <h2>¿Qué puedes hacer?</h2>
+            <p>En MediSud puede contar con las siguientes opciones.</p>
+            <hr class="bottom-line">
           </div>
         </div>
       </div>
-    </div>
-    <!--/ Banner-->       
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 padleft-right">
+            <figure class="imghvr-fold-up">
+                <img src="img/geo.png" class="img-responsive">
+              <figcaption>
+                  <h3>Geolocalización</h3>
+                  <p>Podrás ver la ubicación de los pacientes que solicitaron atención de urgencia, con la finalidad de encontrar posibles focos infecciosos.</p>
+              </figcaption>
+              <a href="#"></a>
+            </figure>
+          </div>
+          <div class="col-md-4 col-sm-6 padleft-right">
+            <figure class="imghvr-fold-up">
+                <img src="img/citas.jpeg" class="img-responsive">
+              <figcaption>
+                  <h3>Estadisticas</h3>
+                  <p>Tendrás acceso a estadisticas sobre la cantidad de personas enfermas de un cierto tipo de enfermdad y en que sector se encuentran.</p>
+              </figcaption>
+              <a href="#"></a>
+            </figure>
+          </div>
+          <div class="col-md-4 col-sm-6 padleft-right">
+            <figure class="imghvr-fold-up">
+                <img src="img/ficha.jpeg" class="img-responsive">
+              <figcaption>
+                  <h3>Información Paciente</h3>
+                  <p>Acceso a información detallada de cada paciente, encontrando también sus controles medicos y de urgencia. </p>
+              </figcaption>
+              <a href="#"></a>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--/ Courses-->     
     <!--Footer-->
     <footer id="footer" class="footer">
       <div class="container text-center">  

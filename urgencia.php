@@ -52,8 +52,6 @@ if($result->num_rows>0){
             <p>Control Registrado en la Fecha: '.$fecha_hora_actual.'</p>
             <hr class="bottom-line">
           </div>
-          <div id="sendmessage">Control Registrado</div>
-          <div id="errormessage"></div>
           <div class="container">
             <div class="row">
                 <div class="col-lg-10">
