@@ -17,15 +17,9 @@
     $longitud = $return[1];
 
     $sql= "Insert into urgencia (run, direccion, latitud, longitud, temperatura, pulso, frespiratorio, presion, saturacion, acciones) values ('$pac','$direccion', '$latitud', '$longitud', '$temperatura', '$pulso', '$ritmo', '$presion', '$saturacion', '$accion')";
-    $query = mysqli_query($link, $sql);
-    if($query){
-        echo "<script>alert(\"Exito al Registrar.\)</script>";
-        echo "<script>location.href='pacientes.php'</script>";
-    }else{
-        echo "<script>alert(\"Error al Registrar.\)</script>";
-        echo "<script>location.href='pacientes.php'</script>";
-    }
+    
+    $result=$conn->query($sql);
+    
     $conn->close();
-    //header('Location: /MediSud/pacientes.php');
-
+    
 ?>
