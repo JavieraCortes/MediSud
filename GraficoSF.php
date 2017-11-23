@@ -10,34 +10,28 @@
         data.addRows([
           
           <?php
-          
-            
+ 
             $enfArray = array('Enfermedad Renal Cronica','Diabetes Mellitus','VIH/SIDA','Hipertension','Hemofilia',
                               'Enfermedad Pulmonar Obstructiva Cronica','Artrosis','Fibrosis Quistica','Artritis Reumatoidea',
                               'Epilepsia','Asma Bronquial','Parkinson','Artritis Idiopatica Juvenil','Esclerosis Multiple',
                               'Hepatitis B','Hepatitis C','Hipotiroidismo','Lupus Eritematoso Sistemico');
-            
-              
+       
             require 'conexion.php';
             
             for($i=0; $i<18; $i++){
-
                 
-                    $sql="SELECT IFNULL(COUNT(*),0) AS Cantidad FROM ENFERMEDAD EN JOIN PACIENTE PC "
+              $sql="SELECT IFNULL(COUNT(*),0) AS Cantidad FROM ENFERMEDAD EN JOIN PACIENTE PC "
                         . "ON EN.Rut = PC.Rut WHERE Localidad = 'San Felipe' AND NomEnfermedad = '".$enfArray[$i]."';";
-                
-                    
+         
                 $result=$conn->query($sql);
 
                 while($row=$result->fetch_assoc()){
 
                      if($row['Cantidad']>0){
-                        echo "['".$enfArray[$i]."',".$row['Cantidad']."],";
-                        
+                        echo "['".$enfArray[$i]."',".$row['Cantidad']."],";     
                     }
                 }
-            }
-            
+            }   
             $conn->close();
           
           ?>

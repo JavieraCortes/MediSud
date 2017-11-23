@@ -1,10 +1,4 @@
 <?php
-/*$medico=$_REQUEST['usuario'];
-require 'conexion.php';
-$sql="SELECT *FROM usuario WHERE usuario=$medico";
-$result=$conn->query($sql);
-if($result->num_rows>0){
-while($row=$result->fetch_assoc()){*/
 echo '<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +21,7 @@ echo '<!DOCTYPE html>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-            <a class="navbar-brand" href="index.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" />
+            <a class="navbar-brand" href="accesoMed.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" />
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -99,8 +93,4 @@ echo '<!DOCTYPE html>
     
   </body>
 </html>';
-    /*}
-}else{
-    echo 'La ficha no Existe';
-}*/
 ?>

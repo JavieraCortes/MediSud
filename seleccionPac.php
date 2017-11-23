@@ -80,7 +80,6 @@
                         <th>Pulsera</th>
                         <th>Nombre</th>
                         <th>Prevision</th>     
-                        <th>Control</th>
                         <th>Ficha</th>
                         </tr>
                         </thead>
@@ -91,7 +90,6 @@
                             <td>'.$row['CodRFID'].'</td>
                             <td>'. $row['Nombre'].'</td>                          
                             <td>'.$row['Prevision'].'</td>
-                            <td>'. "<a href = 'formControl.php?rut=" . $row["Rut"]."'> Control </a>".'</td>
                             <td>'. "<a href = 'ficha.php?rut=" . $row["Rut"]."'> Ver </a>".'</td>
                             </tr>';
                         }   
