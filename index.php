@@ -64,6 +64,42 @@
       </div>
     </div>
     <!--/ Modal box-->
+    <!--Feature-->
+    <section id ="feature" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="header-section text-center">
+                    <h2>¿Comó nace MediSud? </h2>
+                    <img src="img/logo2.png" width="70">
+                    <hr class="bottom-line">
+                </div>
+                <div class="feature-info">               
+                    <div class="row">                    
+                      <div class="col-md-12 col-sm-12 col-xs-12">
+                        <p style="text-align:justify">En las últimas décadas, se ha masificado la cantidad de enfermedades que 
+                            padecen las personas. La OMS (Organización mundial de la salud) certifica que: En Chile, al igual 
+                            que en la mayoría del mundo, las ENT (Enfermedades no transmisibles o crónicas) son la principal 
+                            causa de muerte. </p>
+                        <p style="text-align:justify">Esto es una realidad en Chile por lo que los organismos de salud deben 
+                            estar preparados para afrontar estas enfermedades al momento de ocurrir alguna emergencia, por 
+                            ejemplo, una persona que sufra una crisis en la vía pública y no cuente con sus documentos o 
+                            identificación. Cuando obtenga su primera atención médica, se perdería tiempo al intentar reconocerlo 
+                            para evaluar el tratamiento adecuado a su salud. </p>
+                        <div align="center"><img src="img/med.jpg" width="400" ></div>
+                        <p style="text-align:justify">Conocer la información oportunamente, es un factor provechoso a favor del 
+                            diagnóstico y el actuar médico. Por lo tanto, este proyecto busca aprovechar las primeras horas que 
+                            son primordiales en la atención de un paciente descompensado.</p>
+                        <p style="text-align:justify">Tomando en consideración lo anterior, nace la necesidad de crear una aplicación
+                        web en conjunto con tecnología RFID para facilitar la entrega de información médica de pacientes crónicos o 
+                        de riesgo a los asistentes de salud, creandose asi la posibilidad de que exista una atención más expedita 
+                        y eficiente.</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ feature-->
     <!--Courses-->
     <section id ="courses" class="section-padding">
       <div class="container">

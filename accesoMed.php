@@ -3,7 +3,6 @@
 require 'conexion.php';
 $sql="SELECT *FROM usuario WHERE usuario=$medico";
 $result=$conn->query($sql);
-
 if($result->num_rows>0){
 while($row=$result->fetch_assoc()){*/
 echo '<!DOCTYPE html>
