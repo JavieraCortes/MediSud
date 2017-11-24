@@ -25,9 +25,28 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="pacientes.php">Pacientes</a></li>
-          <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+            
+            <?php
+                session_start();
+                
+                if($_SESSION['tipo'] == 'Doctor'){
+                    
+                    echo '<li><a href="pacientes.php">Pacientes</a></li>
+                        <li><a href="estadisticas.php">Estadisticas</a></li>
+                        <li><a href="formPac.php">Ingresar Paciente</a></li>';
+                }else{
+                    echo '<li><a href="ficha.php?rut='.$_SESSION['usuario'].'">Mi Ficha</a></li>
+                        <li><a href="controles.php?rut'.$_SESSION['usuario'].'">Controles</a></li> ';
+                }
+                
+            
+            ?>
+            
+            
+           
+          <li><form action="ficha.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
         </ul>
         </div>
       </div>
@@ -36,15 +55,27 @@
     <!--Feature-->
     <section id ="feature" class="section-padding">
         <div class="container">
+            <?php
+                
+                echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                }
+              ?>
             <div class="row">
                 
                 <?php
-                    $rut=$_GET['rut'];
+                
+                    
+                     $rut=$_GET['rut'];
+                    
                     require 'conexion.php';
                     $sql="SELECT *FROM paciente WHERE Rut=$rut";
                     $result=$conn->query($sql);
 
                     if($result->num_rows>0){
+                        
                         while($row=$result->fetch_assoc()){
                             $peso=$row['Peso'];
                             $altura=$row['Altura'];
@@ -89,13 +120,18 @@
                                             Altura: '.$row['Altura'].'<br>
                                             Peso: '. $row['Peso'].'<br>
                                             IMC: '.$imc.'<br>
-                                            Alergias:<br>
+                                            Alergias: '. $row['alergias'].'<br>
                                       </div>
                                   </div>
 
                                     <h4>Información Familiar Contacto: </h4><br>
                                     Nombre Familiar: '.$row['NombreFamiliar'].'<br>
-                                    Telefono Familiar: '. $row['TelefonoFamiliar'].'<br>
+                                    Telefono Familiar: '. $row['TelefonoFamiliar'].'<br>';
+                            }
+                        }else{
+                            echo '<script>alert("La ficha no existe");</script>';
+                        }
+                    ?>
 
             </div>
         </div>
@@ -117,9 +153,4 @@
     <script src="js/custom.js"></script>
     
   </body>
-</html>';
-    }
-}else{
-    echo 'La ficha no Existe';
-}
-?>
+</html>

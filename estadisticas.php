@@ -30,7 +30,10 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          <li><a href="formPac.php">Ingresar Paciente</a></li>   
+          <li><form action="estadisticas.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
         </ul>
         </div>
       </div>
@@ -41,6 +44,14 @@
     
     <section id ="contact" class="section-padding">
       <div class="container">
+          <?php
+                    session_start();
+                    echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                    if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                    }
+                   ?>     
         <div class="row">
           <div class="header-section text-center">
             <h2>Estadisticas</h2>

@@ -25,9 +25,29 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="pacientes.php">Pacientes</a></li>
-          <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          
+            <?php
+                session_start();
+                
+                if($_SESSION['tipo'] == 'Doctor'){
+                    
+                    echo '<li><a href="pacientes.php">Pacientes</a></li>
+                        <li><a href="estadisticas.php">Estadisticas</a></li>
+                        <li><a href="formPac.php">Ingresar Paciente</a></li>';
+                        
+                }
+                else{
+                    echo '<li><a href="ficha.php?rut='.$_SESSION['usuario'].'">Mi Ficha</a></li>
+                        <li><a href="controles.php?rut'.$_SESSION['usuario'].'">Controles</a></li> ';
+                    
+                }
+                
+            ?>
+            
+          <li><form action="controles.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
+          </li> 
         </ul>
         </div>
       </div>
@@ -36,10 +56,21 @@
     <!--Feature-->
     <section id ="feature" class="section-padding">
         <div class="container">
-            
+            <div class="row" style="text-align: right">
+              <?php
+                
+                echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                }
+              ?>
+          </div>
+            <div class="row">
             <?php
             
                 $rut=$_GET['rut'];
+            
                 require 'conexion.php';
                 $sql="SELECT *FROM control WHERE Rut=$rut";
                 $result=$conn->query($sql);
@@ -79,12 +110,11 @@
                         . '</div>
                         </div>';
                 }else{
-                    echo 'No hay Controles registrados';
+                    echo '<script>alert("No hay controles registrados");</script>';
                 }
             ?>
-                        
-
-                    
+            </div>
+              
         </div>
     </section>
     <!--/ feature-->

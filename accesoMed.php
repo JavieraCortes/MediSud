@@ -1,5 +1,4 @@
-<?php
-echo '<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -27,7 +26,11 @@ echo '<!DOCTYPE html>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          <li><a href="formPac.php">Ingresar Paciente</a></li>
+          <li><form action="accesoMed.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
+          </li> 
         </ul>
         </div>
       </div>
@@ -38,7 +41,18 @@ echo '<!DOCTYPE html>
         <div class="container">
             <div class="row">
                 <div class="header-section text-center">
-                    <h2>Bienvenido(a) Doctor(a) </h2>
+                    
+                <?php
+                
+                    session_start();
+                    echo '<h2>Bienvenido(a): '.$_SESSION['nombre'].'</h2>';
+                    if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                    }
+                    
+                   ?>     
+
                     <img src="img/acceso.png" width="50">
                     <hr class="bottom-line">
                 </div>
@@ -92,5 +106,4 @@ echo '<!DOCTYPE html>
     <script src="js/custom.js"></script>
     
   </body>
-</html>';
-?>
+</html>

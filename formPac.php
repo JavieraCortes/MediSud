@@ -1,34 +1,3 @@
-
-<?php
-    if(isset($_POST['button'])){
-        $rut = $_POST['rut'];
-        $dv = $_POST['dv'];
-        $cod= $_POST['rfid'];
-        $nombre = $_POST['name'];  
-        $fechanac= $_POST['fechanac'];
-        $genero= $_POST['genero'];  
-        $domicilio= $_POST['domicilio'];
-        $localidad= $_POST['localidad'];     
-        $fono=$_POST['telefono'];
-        $prevision= $_POST['prevision'];
-        $altura= $_POST['altura'];
-        $peso= $_POST['peso'];
-        $tiposangre= $_POST['tpsangre'];
-        $factorrh= $_POST['rh'];
-        $nomfam= $_POST['nombrefam'];
-        $fonofam= $_POST['fonofam'];
-        
-        require "conexion.php";            
-        $sql= "Insert into paciente (Rut, Dv, Nombre, FechaNac, Sexo, Domicilio, Localidad, Fono, Prevision, Altura, Peso, TipoSangre, FactorRH, NombreFamiliar, TelefonoFamiliar, CodRFID) values ('$rut','$dv', '$nombre', '$fechanac', '$genero', '$domicilio', '$localidad', '$fono', '$prevision', '$altura', '$peso', '$tiposangre', '$factorrh', '$nomfam', '$fonofam', '$cod')";
-        $result = $conn->query($sql);
-        $conn->close();
-        
-        header('Location: /MediSud/pacientes.php');
-    }  
-    
-    ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -57,61 +26,31 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          <li><a href="formPac.php">Ingresar Paciente</a></li>   
+          <li><form action="formPac.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
+          </li> 
         </ul>
         </div>
       </div>
     </nav>
     <!--/ Navigation bar-->
-    <!--Modal box-->
-    <div class="modal fade" id="login" role="dialog">
-      <div class="modal-dialog modal-sm">
-      
-        <!-- Modal content no 1-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title text-center form-title">Iniciar Sesión</h4>
-          </div>
-          <div class="modal-body padtrbl">
-
-            <div class="login-box-body">
-              <p class="login-box-msg">Ingresa tus Datos para Iniciar Sesión</p>
-              <div class="form-group">
-                <form name="" id="loginForm">
-                 <div class="form-group has-feedback"> <!----- username -------------->
-                      <input class="form-control" placeholder="Username"  id="loginid" type="text" autocomplete="off" /> 
-                     <span style="display:none;font-weight:bold; position:absolute;color: red;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginid"></span><!---Alredy exists  ! -->
-                      <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                  </div>
-                  <div class="form-group has-feedback"><!----- password -------------->
-                      <input class="form-control" placeholder="Password" id="loginpsw" type="password" autocomplete="off" />
-            <span style="display:none;font-weight:bold; position:absolute;color: grey;position: absolute;padding:4px;font-size: 11px;background-color:rgba(128, 128, 128, 0.26);z-index: 17;  right: 27px; top: 5px;" id="span_loginpsw"></span><!---Alredy exists  ! -->
-                      <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                  </div>
-                  <div class="row">
-                      <div class="col-xs-12">
-                          <div class="checkbox icheck">
-                              <label>
-                                <input type="checkbox" id="loginrem" > Recordarme
-                              </label>
-                          </div>
-                      </div>
-                      <div class="col-xs-12">
-                          <button type="button" class="btn btn-green btn-block btn-flat" onclick="userlogin()">Ingresar</button>
-                      </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--/ Modal box-->
     <!--Contact-->
     <section id ="contact" class="section-padding">
       <div class="container">
+          
+          
+          <?php
+                    session_start();
+                    echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                    if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                    }
+           ?>
+          
+          
         <div class="row">
           <div class="header-section text-center">
             <h2>Ingreso Nuevo Paciente</h2>
@@ -220,9 +159,15 @@
                             </optgroup>
                          </select>
                       </div>
+
                     <div class="validation"></div>
                 </div>
                 </div>
+                <div class="form-group">
+                            Alergias:
+                            <input type="text" class="form-control" name="alergia" id="alergia" placeholder="Ingrese Alergias del Paciente" />
+                            <div class="validation"></div>
+                        </div>    
                 <div class="form-group">
                     <br>Datos Familiar Contacto:<br><br>
                     Nombre Familiar:
@@ -239,14 +184,43 @@
               <div class="col-xs-12">
                 <button type="submit" id="button" name="button" class="form contact-form-button light-form-button oswald light">Ingresar Paciente</button>
               </div>
-          </form>   
+          </form>  
+                              
+            <?php
+                if(isset($_POST['button'])){
+                    $rut = $_POST['rut'];
+                    $dv = $_POST['dv'];
+                    $cod= $_POST['rfid'];
+                    $nombre = $_POST['name'];  
+                    $fechanac= $_POST['fechanac'];
+                    $genero= $_POST['genero'];  
+                    $domicilio= $_POST['domicilio'];
+                    $localidad= $_POST['localidad'];     
+                    $fono=$_POST['telefono'];
+                    $prevision= $_POST['prevision'];
+                    $altura= $_POST['altura'];
+                    $peso= $_POST['peso'];
+                    $tiposangre= $_POST['tpsangre'];
+                    $factorrh= $_POST['rh'];
+                    $alergia = $_POST['alergia'];
+                    $nomfam= $_POST['nombrefam'];
+                    $fonofam= $_POST['fonofam'];
+
+                    require "conexion.php";            
+                    $sql= "Insert into paciente (Rut, Dv, Nombre, FechaNac, Sexo, Domicilio, Localidad, Fono, Prevision, Altura, Peso, TipoSangre, FactorRH, alergias, NombreFamiliar, TelefonoFamiliar, CodRFID) values ('$rut','$dv', '$nombre', '$fechanac', '$genero', '$domicilio', '$localidad', '$fono', '$prevision', '$altura', '$peso', '$tiposangre', '$factorrh', '$alergia', '$nomfam', '$fonofam', '$cod')";
+                    $result = $conn->query($sql);
+                    $conn->close();
+
+                    header('Location: /MediSud/pacientes.php');
+                }  
+
+                ?>
         </div>
       </div>
         
     </section>
 
-       
-   
+
     <!--Footer-->
     <footer id="footer" class="footer">
       <div class="container text-center">  

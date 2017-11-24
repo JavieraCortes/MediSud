@@ -1,13 +1,4 @@
-<?php
-$rut=$_GET['rut'];
-$registro=$_GET['registro'];
-require 'conexion.php';
-$sql="SELECT *FROM control WHERE Rut=$rut and Registro=$registro";
-$result=$conn->query($sql);
-
-if($result->num_rows>0){
-    while($row=$result->fetch_assoc()){
-echo '<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -35,7 +26,11 @@ echo '<!DOCTYPE html>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          <li><a href="formPac.php">Ingresar Paciente</a></li>   
+          <li><form action="verControl.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
+          </li> 
         </ul>
         </div>
       </div>
@@ -44,8 +39,26 @@ echo '<!DOCTYPE html>
     <!--Feature-->
     <section id ="feature" class="section-padding">
         <div class="container">
+             <?php
+                    session_start();
+                    echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                    if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                    }
+                    ?>
             <div class="row">
                 <div class="header-section text-center">
+                    <?php
+                        $rut=$_GET['rut'];
+                        $registro=$_GET['registro'];
+                        require 'conexion.php';
+                        $sql="SELECT *FROM control WHERE Rut=$rut and Registro=$registro";
+                        $result=$conn->query($sql);
+
+                        if($result->num_rows>0){
+                            while($row=$result->fetch_assoc()){
+                        echo '
                     <h2>Control N°'. $row['Registro'].'</h2>
                     <p>Control Medico del paciente Rut: '.$row['Rut'].' </p>
                     <p>Control Registrado en la Fecha y Hora: '.$row['fecha'].'</p>
@@ -95,7 +108,12 @@ echo '<!DOCTYPE html>
                             <label class="col-xs-3 col-form-label">Egreso: </label>
                             <div class="col-xs-9">'.
                                 $row['egreso']
-                            .'</div>
+                            .'</div>';
+                    }
+                }else{
+                    echo '<script>alert("Error al acceder al control");</script>';
+                }
+                ?>
                         </div>
                 </div>
             </div>
@@ -120,9 +138,4 @@ echo '<!DOCTYPE html>
     <script src="js/custom.js"></script>
     
   </body>
-</html>';
-    }
-}else{
-    echo 'Problemas al Acceder al Control';
-}
-?>
+</html>

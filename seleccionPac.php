@@ -28,7 +28,11 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          <li><a href="formPac.php">Ingresar Paciente</a></li>
+          <li><form action="seleccionPac.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
+          </li> 
         </ul>
         </div>
       </div>
@@ -39,6 +43,20 @@
     
     <section id ="contact" class="section-padding">
       <div class="container">
+          
+          <div class="row">
+              
+              <?php
+                    session_start();
+                    echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                    if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                    }
+              ?>
+              
+          </div>
+          
         <div class="row">
           <div class="header-section text-center">
             <h2>Pacientes</h2>
@@ -51,7 +69,7 @@
                     <div class="form-group row">
                             <label class="col-xs-3 col-form-label">Tag RFID Asociado:</label>
                             <div class="col-xs-5">
-                              <input class="form-control" type="text" min="0" maxlength="20" name="tsg" />
+                              <input class="form-control" type="text" min="0" maxlength="20" name="tag" />
                             </div>
                             <div class="col-xs-3 "> 
                             <button type="submit" name="buscar" class="btn btn-primary">Buscar Paciente</button>
@@ -60,45 +78,49 @@
                       <!-- form contact-form-button   -->
                     </form>
                 </div>
-            
-          <div id="sendmessage">Control Registrado</div>
-          <div id="errormessage"></div>
+ 
           <div class="container">
+               
             <div class="row">
                 <div class="col-lg-10">
+                    
+                    
                     <?php
                     require 'conexion.php';
                     if(isset($_POST['buscar'])){
+                        
                         $tag=$_POST['tag'];
-                        $sql = "select *from paciente where CodRFID='$tag'";
-                    $result = $conn->query($sql);
-                    if($result->num_rows > 0){
-                        echo'<table class="pacientes">
-                        <thead>
-                        <tr>
-                        <th>Rut</th>
-                        <th>Pulsera</th>
-                        <th>Nombre</th>
-                        <th>Prevision</th>     
-                        <th>Ficha</th>
-                        </tr>
-                        </thead>
-                        <tbody>';
-                        while($row = $result->fetch_assoc()){
-                            echo '<tr>
-                            <td>'. $row['Rut'] . "-". $row['Dv'].'</td> 
-                            <td>'.$row['CodRFID'].'</td>
-                            <td>'. $row['Nombre'].'</td>                          
-                            <td>'.$row['Prevision'].'</td>
-                            <td>'. "<a href = 'ficha.php?rut=" . $row["Rut"]."'> Ver </a>".'</td>
-                            </tr>';
-                        }   
-                    }else{
-                        echo 'No hay pacientes registrados';
-                    }
-                    echo '</tbody></table>';
-                    }
-                    $conn->close();
+                        $sql = "select * from paciente where CodRFID='".$tag."'";
+                        $result = $conn->query($sql);
+                        
+                        if($result->num_rows > 0){
+                            echo'<table class="pacientes">
+                            <thead>
+                            <tr>
+                            <th>Rut</th>
+                            <th>Pulsera</th>
+                            <th>Nombre</th>
+                            <th>Prevision</th>     
+                            <th>Ficha</th>
+                            </tr>
+                            </thead>
+                            <tbody>';
+                            
+                            while($row = $result->fetch_assoc()){
+                                echo '<tr>
+                                <td>'. $row['Rut'] . "-". $row['Dv'].'</td> 
+                                <td>'.$row['CodRFID'].'</td>
+                                <td>'. $row['Nombre'].'</td>                          
+                                <td>'.$row['Prevision'].'</td>
+                                <td>'. "<a href = 'ficha.php?rut=" . $row["Rut"]."'> Ver </a>".'</td>
+                                </tr>';
+                            }   
+                        }else{
+                            echo '<script>alert("Codigo inexistente");</script>';
+                        }
+                        echo '</tbody></table>';
+                        }
+                        $conn->close();
                     ?>             
                 </div>
             </div>

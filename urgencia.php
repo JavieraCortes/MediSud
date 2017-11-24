@@ -1,13 +1,3 @@
-<?php 
-$paciente=$_GET['urgencia'];
-date_default_timezone_set('America/Santiago');
-$fecha_hora_actual = date('d-m-y H:i:s');
-require 'conexion.php';
-$sql="SELECT *FROM paciente WHERE Rut=$paciente";
-$result=$conn->query($sql);
-if($result->num_rows>0){
-    while($row=$result->fetch_assoc()){
-        echo'
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +26,11 @@ if($result->num_rows>0){
         <ul class="nav navbar-nav navbar-right">
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          <li><a href="formPac.php">Ingresar Paciente</a></li> 
+          <li><form action="urgencia.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
+          </li> 
         </ul>
         </div>
       </div>
@@ -45,11 +39,35 @@ if($result->num_rows>0){
     <!--Contact-->
     <section id ="contact" class="section-padding">
       <div class="container">
+          
+          <div class="row">
+              
+               <?php
+                    session_start();
+                    echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                    if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                    }
+                    ?>
+          </div>
+          
+                    
         <div class="row">
           <div class="header-section text-center">
-            <h2>Control Paciente</h2>
-            <p>Registrando Control Medico para el paciente: '.$row['Nombre']. ' Rut: '.$row['Rut'].' </p>
-            <p>Control Registrado en la Fecha: '.$fecha_hora_actual.'</p>
+            <h2>Atención de Urgencia</h2>
+            <?php 
+                $paciente=$_GET['urgencia'];
+                date_default_timezone_set('America/Santiago');
+                $fecha_hora_actual = date('d-m-y H:i:s');
+                require 'conexion.php';
+                $sql="SELECT *FROM paciente WHERE Rut=$paciente";
+                $result=$conn->query($sql);
+                if($result->num_rows>0){
+                    while($row=$result->fetch_assoc()){
+                        echo'
+                            <p>Registrando Urgencia Medica para el paciente: '.$row['Nombre']. ' Rut: '.$row['Rut'].' </p>
+            <p>Urgencia Registrada en la Fecha: '.$fecha_hora_actual.'</p>
             <hr class="bottom-line">
           </div>
           <div class="container">
@@ -118,14 +136,23 @@ if($result->num_rows>0){
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Procedimiento Realizado: </label>
                             <div class="col-xs-10">
-                                <textarea style="overflow: hidden" name="accion" rows="2" cols="98%" placeholder="Procedimiento Médico Realizado"></textarea>
+                                <textarea style="overflow: hidden" name="accion" rows="2" cols="96%" placeholder="Procedimiento Médico Realizado"></textarea>
                             </div>
                         </div>
 
                         <div class="col-xs-12">
                             <button type="submit" id="submit" name="submit" class="form contact-form-button light-form-button oswald light">Registrar Urgencia</button>
                         </div>
-                    </form>    
+                    </form>';
+                }
+
+                }else{
+                    echo '<script>alert("No se pudo ingresar el control");</script>';
+                }
+
+                 $conn->close();
+             ?>  
+                
                 </div>
             </div>
         </div>
@@ -149,12 +176,4 @@ if($result->num_rows>0){
     <script src="js/custom.js"></script>
     
   </body>
-</html>';
-    }
-    
-    }else{
-        echo 'No se pudo Generar Control';
-    }
-    
-     $conn->close();
-     ?>
+</html>

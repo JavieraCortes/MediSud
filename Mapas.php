@@ -100,6 +100,10 @@
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
           <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          <li><form action="Mapas.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+              </form>
+          </li> 
         </ul>
         </div>
       </div>
@@ -108,8 +112,17 @@
     <!--Contact-->
     <section id ="contact" class="section-padding">
       <div class="container">
+          <div class="row" style="text-align: right">
+              <?php
+                session_start();
+                echo '<h2>Sr(a): '.$_SESSION['nombre'].'</h2>';
+                if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                }
+              ?>
+          </div>
         <div class="row">
-         
             
             <div id="mapCanvas" style="width: 100%;height: 100%;"></div>
             

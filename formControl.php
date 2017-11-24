@@ -1,13 +1,3 @@
-<?php 
-$rut=$_GET['rut'];
-date_default_timezone_set('America/Santiago');
-$fecha_hora_actual = date('d-m-y H:i:s');
-require 'conexion.php';
-$sql="SELECT *FROM paciente WHERE Rut=$rut";
-$result=$conn->query($sql);
-if($result->num_rows>0){
-    while($row=$result->fetch_assoc()){
-        echo'
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -36,7 +26,11 @@ if($result->num_rows>0){
         <ul class="nav navbar-nav navbar-right">
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          <li><a href="formPac.php">Ingresar Paciente</a></li> 
+          <li><form action="formControl.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
+          </li> 
         </ul>
         </div>
       </div>
@@ -45,9 +39,30 @@ if($result->num_rows>0){
     <!--Contact-->
     <section id ="contact" class="section-padding">
       <div class="container">
+          <?php
+                session_start();
+                echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                }
+              ?>
         <div class="row">
           <div class="header-section text-center">
             <h2>Control Paciente</h2>
+            
+            
+                <?php 
+                    $rut=$_GET['rut'];
+                    date_default_timezone_set('America/Santiago');
+                    $fecha_hora_actual = date('d-m-y H:i:s');
+                    require 'conexion.php';
+                    $sql="SELECT *FROM paciente WHERE Rut=$rut";
+                    $result=$conn->query($sql);
+                    if($result->num_rows>0){
+                        while($row=$result->fetch_assoc()){
+                            echo'
+                                
             <p>Registrando Control Medico para el paciente: '.$row['Nombre']. ' Rut: '.$row['Rut'].' </p>
             <p>Control Registrado en la Fecha: '.$fecha_hora_actual.'</p>
             <hr class="bottom-line">
@@ -144,7 +159,35 @@ if($result->num_rows>0){
                         <div class="col-xs-12">
                             <button type="submit" id="submit" name="submit" class="form contact-form-button light-form-button oswald light">Registrar Control</button>
                         </div>
-                    </form>    
+                    </form>';
+    }
+    
+    }else{
+        echo '<script>alert("No se pudo ingresar el control");</script>';
+    }
+    
+     $conn->close();
+     
+     $rut=$_GET['rut'];
+        
+        if(isset($_POST['submit'])){
+            $run = $_POST['run'];
+            $motconsulta = $_POST['motcon'];
+            $diagnostico = $_POST['diagnostico'];  
+            $complemento= $_POST['comdiag'];
+            $procedimiento= $_POST['procedimiento'];  
+            $indicacion= $_POST['indicacion'];
+            $egreso= $_POST['egreso'];  
+            require "conexion.php";            
+            $sql= "Insert into control (Rut, motivo ,fecha, diagnostico, complemento, procedimiento, indicacion, egreso) values ('$run','$motconsulta', '$fecha_hora_actual', '$diagnostico', '$complemento', '$procedimiento', '$indicacion', '$egreso')";
+            $result = $conn->query($sql);
+            $conn->close();
+            header('Location: /MediSud/pacientes.php');
+        }   
+     
+     ?>  
+                    
+
                 </div>
             </div>
         </div>
@@ -168,31 +211,4 @@ if($result->num_rows>0){
     <script src="js/custom.js"></script>
     
   </body>
-</html>';
-    }
-    
-    }else{
-        echo 'No se pudo Generar Control';
-    }
-    
-     $conn->close();
-     ?>
-     <?php
-     
-        $rut=$_GET['rut'];
-        
-        if(isset($_POST['submit'])){
-            $run = $_POST['run'];
-            $motconsulta = $_POST['motcon'];
-            $diagnostico = $_POST['diagnostico'];  
-            $complemento= $_POST['comdiag'];
-            $procedimiento= $_POST['procedimiento'];  
-            $indicacion= $_POST['indicacion'];
-            $egreso= $_POST['egreso'];  
-            require "conexion.php";            
-            $sql= "Insert into control (Rut, motivo ,fecha, diagnostico, complemento, procedimiento, indicacion, egreso) values ('$run','$motconsulta', '$fecha_hora_actual', '$diagnostico', '$complemento', '$procedimiento', '$indicacion', '$egreso')";
-            $result = $conn->query($sql);
-            $conn->close();
-            header('Location: /MediSud/pacientes.php');
-        }   
-    ?>
+</html>

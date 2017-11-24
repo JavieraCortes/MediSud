@@ -1,11 +1,3 @@
-<?php
-$r=$_GET['ficha'];
-require 'conexion.php';
-$sql="SELECT *FROM paciente WHERE Rut=$r";
-$result=$conn->query($sql);
-if($result->num_rows>0){
-    while($row=$result->fetch_assoc()){
-echo '
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +27,10 @@ echo '
         <ul class="nav navbar-nav navbar-right">
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>    
+          <li><a href="formPac.php">Ingresar Paciente</a></li>  
+          <li><form action="enfermedad.php" method="post">
+                  <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
+          </form>
         </ul>
         </div>
       </div>
@@ -44,9 +39,25 @@ echo '
     <!--Feature-->
     <section id ="feature" class="section-padding">
         <div class="container">
+            <?php
+                    session_start();
+                    echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                    if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                    }
+                   ?>     
             <div class="row">
                 <div class="header-section text-center">
                   <h2>Añadir Enfermedad Crónica</h2>
+                  <?php
+                    $r=$_GET['ficha'];
+                    require 'conexion.php';
+                    $sql="SELECT *FROM paciente WHERE Rut=$r";
+                    $result=$conn->query($sql);
+                    if($result->num_rows>0){
+                        while($row=$result->fetch_assoc()){
+                    echo '
                   <p>Se Registrará una enfermedad Crónica al paciente '.$row['Nombre']. ' Rut: '.$row['Rut'].' </p>
                   <hr class="bottom-line">
                 </div>
@@ -96,14 +107,33 @@ echo '
                             <label class="col-xs-2 col-form-label">Frecuencia: </label>
                             
                             <div class="col-xs-3">
-                                <input class="form-control" type="text"  name="frecuencia" placeholder="Frecuencia(horas)" />                            </div>
+                                <input class="form-control" type="text"  name="frecuencia" placeholder="Frecuencia(horas)" /> 
+                            </div>
                         </div>
                             
                         <div class="col-xs-12">
                             <button type="submit" id="submit" name="botton" class="form contact-form-button light-form-button oswald light">Registrar Enfermedad Cronica</button>
                         </div>
-                    </form>    
+                    </form>';
+                }}
+
+                $r=$_GET['ficha'];
+
+                if(isset($_POST['botton'])){
+                    $cedula = $_POST['cedula'];
+                    $enfermedad = $_POST['enfermedad'];
+                    $medicamento = $_POST['medicamento'];
+                    $dosis = $_POST['dosis'];  
+                    $frecuencia= $_POST['frecuencia'];
+                    require "conexion.php";            
+                    $sql1= "Insert into enfermedad (Rut, NomEnfermedad, NomMedicamento, DosisMg, PeriodoHr) values ('$cedula','$enfermedad', '$medicamento', '$dosis', '$frecuencia')";
+                    $result = $conn->query($sql1);
+                    $conn->close();
+                    header('Location: /MediSud/pacientes.php');
+                }   
+            ?>
                 
+
             </div>
         </div>
     </section>
@@ -124,28 +154,4 @@ echo '
     <script src="js/custom.js"></script>
     
   </body>
-</html>';
-}
-    
-    }else{
-        echo 'No se pudo Registrar Enfermedad Cronica';
-    }
-    
-     $conn->close();
-?>
-     <?php
-        $r=$_GET['ficha'];
-        
-        if(isset($_POST['botton'])){
-            $cedula = $_POST['cedula'];
-            $enfermedad = $_POST['enfermedad'];
-            $medicamento = $_POST['medicamento'];
-            $dosis = $_POST['dosis'];  
-            $frecuencia= $_POST['frecuencia'];
-            require "conexion.php";            
-            $sql1= "Insert into enfermedad (Rut, NomEnfermedad, NomMedicamento, DosisMg, PeriodoHr) values ('$cedula','$enfermedad', '$medicamento', '$dosis', '$frecuencia')";
-            $result = $conn->query($sql1);
-            $conn->close();
-            header('Location: /MediSud/pacientes.php');
-        }   
-    ?>
+</html>

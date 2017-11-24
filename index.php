@@ -31,6 +31,8 @@
       </div>
     </nav>
     <!--/ Navigation bar-->
+    
+    
     <!--Modal box-->
     <div class="modal fade" id="login" role="dialog">
       <div class="modal-dialog modal-sm">     
@@ -44,25 +46,74 @@
             <div class="login-box-body">
               <p class="login-box-msg">Ingresa tus Datos para Iniciar Sesión</p>
               <div class="form-group">
-                  <form action="loginForm.php" method="post">
-                 <div class="form-group has-feedback">
-                      <input class="form-control" placeholder="Usuario" name="usuario" type="number" autocomplete="off" /> 
-                  </div>
-                  <div class="form-group has-feedback">
-                      <input class="form-control" placeholder="Contraseña" name="contra" type="password" autocomplete="off" />
-                  </div>
-                  <div class="row">
-                      <div class="col-xs-12">
-                          <button type="submit" id="boton" name="boton" class="btn btn-green btn-block btn-flat">Ingresar</button>
-                      </div>
-                  </div>
+                  
+                  
+                 <form action="index.php" method="post">
+                    <div class="form-group has-feedback">
+                        <input class="form-control" placeholder="Usuario" name="usuario" type="number" autocomplete="off" /> 
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input class="form-control" placeholder="Contraseña" name="contra" type="password" autocomplete="off" />
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button type="submit" id="boton" name="boton" class="btn btn-green btn-block btn-flat">Ingresar</button>
+                        </div>
+                    </div>
                 </form>
+                  
+                  
+                  
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
+    
+    <div class="row">
+        
+        <?php
+                  
+                    if(isset($_POST['boton'])){
+                        $user = $_POST['usuario'];
+                        $pass = md5($_POST['contra']);
+                        
+                        require 'conexion.php';
+                        $sql="select * from usuario where usuario=$user";
+                        $result = $conn->query($sql);
+                        
+                        if($result->num_rows>0){
+                            while($row = $result->fetch_assoc()){
+                                
+                                if($pass == $row['pass']){
+                                    
+                                    session_start();
+                                    $_SESSION['activo'] = true;
+                                    $_SESSION['usuario'] = $usuario;
+                                    $_SESSION['nombre'] = $row['nombre'];
+                                    $_SESSION['tipo'] = $row['tipoUsuario'];
+                                    
+                                    if($row['tipoUsuario'] == 'Paciente'){
+                                        header('Location: accesoPac.php');
+                                    }
+                                    if($row['tipoUsuario'] == 'Doctor'){
+                                        header('Location: accesoMed.php');
+                                    }
+                                }else{
+                                    echo '<script>alert("Contraseña incorrecta");</script>';
+                                }
+                            }
+                        }else{
+                            echo '<script>alert("El usuario no Existe");</script>';
+                        }
+                        $conn->close();
+                    }
+                  ?>
+        
+    </div>
+    
     <!--/ Modal box-->
     <!--Feature-->
     <section id ="feature" class="section-padding">
