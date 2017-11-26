@@ -101,6 +101,9 @@
                                     if($row['tipoUsuario'] == 'Doctor'){
                                         header('Location: accesoMed.php');
                                     }
+                                    if($row['tipoUsuario'] == 'Admin'){
+                                        header('Location: accesoAdm.php');
+                                    }
                                 }else{
                                     echo '<script>alert("Contraseña incorrecta");</script>';
                                 }

@@ -76,18 +76,13 @@
                         
                         <br><br><br>
                         
-                        
+                        <div class="col-lg-12"  style="text-align:center">
                         <div class="col-md-3 col-sm-3 col-xs-3">
                             <a href="pacientes.php"><img src="img/paxid.png" width="200"></a><br>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="estadisticas.php"><img src="img/miscontroles.png" width="150"></a><br>
+                            <a href="controles.php"><img src="img/miscontroles.png" width="150"></a><br>
                         </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="formPac.php"><img src="img/ingresar.png" width="200"></a><br>
-                        </div>
-                        <div class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="geolocal.php"><img src="img/geolocalizacion.png" width="200"></a><br>
                         </div>
                     </div>
                 </div>
