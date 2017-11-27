@@ -21,20 +21,32 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-            <a class="navbar-brand" href="acceso.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" />
+            <a class="navbar-brand" href="accesoMed.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" />
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
             
-            <li><a href="pacientes.php">Pacientes</a></li>
-            <li><a href="estadisticas.php">Estadisticas</a></li>
-            <li><a href="formPac.php">Ingresar Paciente</a></li>';
+            <?php
+                session_start();
                 
-            <li>
-                <form action="ficha.php" method="post">
+                if($_SESSION['tipo'] == 'Doctor'){
+                    
+                    echo '<li><a href="pacientes.php">Pacientes</a></li>
+                        <li><a href="estadisticas.php">Estadisticas</a></li>
+                        <li><a href="formPac.php">Ingresar Paciente</a></li>';
+                }else{
+                    echo '<li><a href="ficha.php?rut='.$_SESSION['usuario'].'">Mi Ficha</a></li>
+                        <li><a href="controles.php?rut'.$_SESSION['usuario'].'">Controles</a></li> ';
+                }
+                
+            
+            ?>
+            
+            
+           
+          <li><form action="ficha.php" method="post">
                   <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
-                </form>
-            </li>
+          </form>
         </ul>
         </div>
       </div>
@@ -44,7 +56,7 @@
     <section id ="feature" class="section-padding">
         <div class="container">
             <?php
-                session_start();
+                
                 echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
                 if(isset($_POST['salir'])){
                     session_destroy();
@@ -56,10 +68,10 @@
                 <?php
                 
                     
-                     $rut=$_GET['rut'];
+                     $tag=$_GET['tag'];
                     
                     require 'conexion.php';
-                    $sql="SELECT *FROM paciente WHERE Rut=$rut";
+                    $sql="SELECT *FROM paciente WHERE CodRFID='$tag'";
                     $result=$conn->query($sql);
 
                     if($result->num_rows>0){

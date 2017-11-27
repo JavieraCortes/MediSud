@@ -44,14 +44,17 @@
     
     <section id ="contact" class="section-padding">
       <div class="container">
-          <?php
-                    session_start();
-                    echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
-                    if(isset($_POST['salir'])){
-                    session_destroy();
-                    header('Location: index.php');
-                    }
-                   ?>     
+          
+        <?php
+            session_start();
+            echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+            if(isset($_POST['salir'])){
+                session_destroy();
+                header('Location: index.php');
+            }
+        ?>     
+          
+          
         <div class="row">
           <div class="header-section text-center">
             <h2>Estadisticas</h2>
@@ -75,27 +78,94 @@
                         <button type="submit" class="btn btn-primary" name="button" onclick="">Graficar</button>
                      </form>
                     <br><br>
+                    
                     <?php
-                            if(isset($_POST['button'])){
+                       
+                        if(isset($_POST['button'])){
                                 
-                                $local = $_POST['Localidad'];
+                            $local = $_POST['Localidad'];
+                            
+                            $enfArray = array('Enfermedad Renal Cronica','Diabetes Mellitus','VIH/SIDA','Hipertension','Hemofilia',
+                                        'Enfermedad Pulmonar Obstructiva Cronica','Artrosis','Fibrosis Quistica',
+                                        'Artritis Reumatoidea','Epilepsia','Asma Bronquial','Parkinson','Artritis Idiopatica Juvenil',
+                                        'Esclerosis Multiple','Hepatitis B','Hepatitis C','Hipotiroidismo','Lupus Eritematoso Sistemico');
+
+                            require 'conexion.php';
+
+                            $cantTotal = 0;
+                            
+                            for($i=0; $i<18; $i++){
                                 
-                                if($local=='Todas'){
-                                    echo '<p align="center" style="color:black">Porcentaje de personas padecientes '
-                                    . 'de enfermedades cronicas </p>';
-                                    include "GraficoTO.php";
+                                if($local == 'Todas'){
+                                    
+                                    $sql="SELECT IFNULL(COUNT(*),0) AS Cantidad FROM ENFERMEDAD EN JOIN PACIENTE PC "
+                                   . "ON EN.Rut = PC.Rut WHERE NomEnfermedad = '".$enfArray[$i]."';";
+                                    $tit = "Porcentaje de personas padecientes de enfermedades cronicas ";
+                                    
+                                }else{
+                                    
+                                    $sql="SELECT IFNULL(COUNT(*),0) AS Cantidad FROM ENFERMEDAD EN JOIN PACIENTE PC "
+                                   . "ON EN.Rut = PC.Rut WHERE Localidad = '$local' AND NomEnfermedad = '".$enfArray[$i]."';";
+                                    $tit = "Porcentaje de personas padecientes de enfermedades cronicas en la localidad de $local ";
                                 }
-                                if($local=='Los Andes'){
-                                    echo '<p align="center" style="color:black">Porcentaje de personas padecientes '
-                                    . 'de enfermedades cronicas de la localidad de Los Andes</p>';
-                                    include "GraficoLA.php";
+                                
+
+                                $result=$conn->query($sql); 
+                                
+                                while($row=$result->fetch_assoc()){
+
+                                    $valArray[$i] = $row['Cantidad'];
+                                    $cantTotal = $cantTotal + $row['Cantidad'];
+                                
                                 }
-                                if($local=='San Felipe'){
-                                    echo '<p align="center" style="color:black">Porcentaje de personas padecientes '
-                                    . 'de enfermedades cronicas de la localidad de San Felipe</p>';
-                                    include "GraficoSF.php";
-                                }
-                            } 
+                            }
+
+                            $conn->close();
+                            
+                            
+                            
+                            if($cantTotal>0){
+                                
+                                echo "<script type='text/javascript'>
+                                    google.charts.load('current', {'packages':['corechart']});
+                                    google.charts.setOnLoadCallback(drawChart);
+
+                                    function drawChart() {
+
+                                        var data = new google.visualization.DataTable();
+                                        data.addColumn('string', 'Topping');
+                                        data.addColumn('number', 'Slices');
+                                        data.addRows([";
+                                          
+
+                                        for($i=0; $i<18; $i++){
+
+                                            if($valArray[$i]>0){
+                                                echo "['$enfArray[$i]',$valArray[$i]],";
+                                                
+                                            }
+                                        }
+                            
+                                        
+                                        echo "]);
+                                            var options = {
+                                            title: '$tit'
+                                          };
+
+                                          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                                          chart.draw(data, options);
+                                        }
+                                        
+                                      </script>";
+                                 
+                            }else{
+                                echo '<center><h2>No existen pacientes con enfermedades cronicas</h2></center>';
+                            }
+                            
+                           
+                        }
+                            
                         ?>
                     
                     <div id="piechart" style="width: 100%; height: 500px">

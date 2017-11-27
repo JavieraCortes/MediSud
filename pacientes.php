@@ -60,28 +60,29 @@
             <hr class="bottom-line">
           </div>
             
+            <div class="row">
               <div class="col-lg-10">
                   
                   
-                   <form id="form1" method="post" class="form-horizontal mitad" action="seleccionPac.php">
-                    <div class="form-group row">
+                    <form id="form1" method="get" class="form-horizontal mitad" action="ficha.php">
+                        <div class="form-group row">
+                        
                             <label class="col-xs-3 col-form-label">Tag RFID Asociado:</label>
                             <div class="col-xs-5">
                               <input class="form-control" type="text" min="0" maxlength="20" name="tag" />
                             </div>
-                            <div class="col-xs-3 "> 
-                                
-                              
-                            <button type="submit" name="buscar" class="btn btn-primary">Buscar Paciente</button>
-                                
-                                
+                            
+                            <div class="col-xs-3 ">                                 
+                                <button type="submit" name="buscar" class="btn btn-primary">Buscar Paciente</button>                                
+                            </div>
                         </div>
-                        </div>
-                      <!-- form contact-form-button   -->
+                      
                     </form>
                   
                 </div>
-
+            </div>
+            
+            
           <div class="container">
             <div class="row">
                 <div class="col-lg-10">
@@ -112,37 +113,17 @@
                                 <td>'.$row['CodRFID'].'</td>
                                 <td>'. $row['Nombre'].'</td>                          
                                 <td>'.$row['Prevision'].'</td>
-                                <td>'. "<a href = 'ficha.php?rut=" . $row["Rut"]."'> Ver </a>".'</td>
+                                <td>'. '<a href = "ficha.php?tag='. $row["CodRFID"].'"> Ver </a>'.'</td>
                                 </tr>';
                             }
                             
                             echo '</tbody></table>';
                             
                         }else{
-                            echo '<script>alert("No hay pacientes registrados");</script>';
+                            echo '<center><h2>No hay pacientes registrados</h2></center>';
                         }
                         
                         
-
-                        if(isset($_POST['buscar'])){
-
-                            $tag=$_POST['tag'];
-                            
-                            require 'conexion.php';                        
-                            $sql = "select * from paciente where CodRFID='$tag'";
-                            $result = $conn->query($sql);
-
-                            if($result->num_rows > 0){
-
-                                while($row = $result->fetch_assoc()){
-                                    
-                                    header("Location: ficha.php");
-                                    
-                                }   
-                            }else{
-                                echo '<script>alert("Codigo inexistente");</script>';
-                            }
-                        }
                         $conn->close();
                     
                     ?>

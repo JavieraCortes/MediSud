@@ -91,7 +91,7 @@
                                     
                                     session_start();
                                     $_SESSION['activo'] = true;
-                                    $_SESSION['usuario'] = $usuario;
+                                    $_SESSION['user'] = $row['usuario'];
                                     $_SESSION['nombre'] = $row['nombre'];
                                     $_SESSION['tipo'] = $row['tipoUsuario'];
                                     
@@ -100,9 +100,6 @@
                                     }
                                     if($row['tipoUsuario'] == 'Doctor'){
                                         header('Location: accesoMed.php');
-                                    }
-                                    if($row['tipoUsuario'] == 'Admin'){
-                                        header('Location: accesoAdm.php');
                                     }
                                 }else{
                                     echo '<script>alert("Contraseña incorrecta");</script>';

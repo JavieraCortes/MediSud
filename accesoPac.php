@@ -28,8 +28,8 @@
             
             session_start();
             
-            echo '<li><a href="ficha.php?rut='.$_SESSION['usuario'].'">Ficha</a></li>
-                        <li><a href="controles.php?rut='.$_SESSION['usuario'].'">Controles</a></li>';
+            echo '<li><a href="FichaPac.php">Mi Ficha</a></li>
+                  <li><a href="ControlesPac.php">Controles</a></li>';
             
             ?>
             
@@ -47,6 +47,8 @@
         <div class="container">
             <div class="row">
                 <div class="header-section text-center">
+                    
+                    
                     <?php
                     
                     echo '<h2>Bienvenido(a): '.$_SESSION['nombre'].'</h2>';
@@ -76,13 +78,12 @@
                         
                         <br><br><br>
                         
-                        <div class="col-lg-12"  style="text-align:center">
+                        
                         <div class="col-md-3 col-sm-3 col-xs-3">
                             <a href="pacientes.php"><img src="img/paxid.png" width="200"></a><br>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="controles.php"><img src="img/miscontroles.png" width="150"></a><br>
-                        </div>
+                            <a href="controlPac.php"><img src="img/miscontroles.png" width="150"></a><br>
                         </div>
                     </div>
                 </div>

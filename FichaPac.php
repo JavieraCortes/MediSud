@@ -70,7 +70,9 @@
                 if($result->num_rows>0){
                     
                     while($row = $result->fetch_assoc()){
-                        
+                        $peso=$row['Peso'];
+                            $altura=$row['Altura'];
+                            $imc=round($peso/(($altura)*2),3);
                         echo '<div class="row">                    
                                       <div class="col-md-7 col-sm-7 col-xs-7 left">
                                             <h4>Información Personal:</h4><br>
