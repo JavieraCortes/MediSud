@@ -66,8 +66,7 @@
             <div class="row">
                 
                 <?php
-                
-                    
+                                
                      $tag=$_GET['tag'];
                     
                     require 'conexion.php';
@@ -95,10 +94,10 @@
                                      <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
                                              <a href = "formControl.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ingresar Control</button></a>
                                       </div>
-                                      <div align="center" class="col-md-3 col-sm-4 col-xs-3 center">
+                                      <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
                                             <a href="urgencia.php?urgencia='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ingresar Urgencia</button></a>
                                       </div>
-                                      <div align="center" class="col-md-3 col-sm-4 col-xs-3 center">
+                                      <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
                                              <a href="enfermedad.php?ficha='.$row["Rut"].'"><button type="button" class="btn btn-primary">Añadir E.Crónica</button></a>
                                       </div>
                                   </div>

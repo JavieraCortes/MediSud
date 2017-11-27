@@ -59,7 +59,7 @@
             <?php 
                 $paciente=$_GET['urgencia'];
                 date_default_timezone_set('America/Santiago');
-                $fecha_hora_actual = date('d-m-y H:i:s');
+                $fecha_hora_actual = date('Y-m-d H:i:s');
                 require 'conexion.php';
                 $sql="SELECT *FROM paciente WHERE Rut=$paciente";
                 $result=$conn->query($sql);
@@ -77,6 +77,8 @@
                     
                         <input type="hidden" value="'.$row['Rut'].'" name="pac">
                             
+                        <input type="hidden" value="'.$fecha_hora_actual.'" name="datte">
+                            
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Ubicación Paciente: </label>
                             <div class="col-xs-10">
@@ -92,7 +94,7 @@
                             <label class="col-xs-2 col-form-label">Temperatura: </label>
                                 <div class="row">                    
                                     <div class="col-md-4 col-sm-4 col-xs-4 left">
-                                        <input class="form-control" type="text"  name="temperatura" placeholder="Temperatura" />
+                                        <input class="form-control" type="text"  name="temperatura" placeholder="Temperatura (°C)" />
                                     </div>
                                 </div>                             
                         </div>
@@ -128,7 +130,7 @@
                             <label class="col-xs-2 col-form-label">Saturación: </label>
                                 <div class="row">                    
                                     <div class="col-md-4 col-sm-4 col-xs-4 left">
-                                        <input class="form-control" type="text"  name="saturacion" placeholder="Saturación de Oxígeno" />
+                                        <input class="form-control" type="text"  name="saturacion" placeholder="Saturación de Oxígeno (%)" />
                                     </div>
                                 </div>                             
                         </div>
@@ -151,6 +153,7 @@
                 }
 
                  $conn->close();
+
              ?>  
                 
                 </div>

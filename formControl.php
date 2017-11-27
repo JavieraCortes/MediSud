@@ -55,7 +55,7 @@
                 <?php 
                     $rut=$_GET['rut'];
                     date_default_timezone_set('America/Santiago');
-                    $fecha_hora_actual = date('d-m-y H:i:s');
+                    $fecha_hora_actual = date('Y-m-d H:i:s');
                     require 'conexion.php';
                     $sql="SELECT *FROM paciente WHERE Rut=$rut";
                     $result=$conn->query($sql);

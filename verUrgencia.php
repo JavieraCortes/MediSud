@@ -65,13 +65,13 @@
                         $rut=$_GET['rut'];
                         $registro=$_GET['registro'];
                         require 'conexion.php';
-                        $sql="SELECT *FROM control WHERE Rut=$rut and Registro=$registro";
+                        $sql="SELECT *FROM urgencia WHERE Rut=$rut and Registro=$registro";
                         $result=$conn->query($sql);
 
                         if($result->num_rows>0){
                             while($row=$result->fetch_assoc()){
                         echo '
-                    <h2>Control N°'. $row['Registro'].'</h2>
+                    <h2>Urgencia N°'. $row['Registro'].'</h2>
                     <p>Control Medico del paciente Rut: '.$row['Rut'].' </p>
                     <p>Control Registrado en la Fecha y Hora: '.$row['fecha'].'</p>
                     <img src="img/control.png" width="50">
@@ -82,48 +82,55 @@
                 <div class="col-lg-10">
                     
                         <div class="form-group row">
-                            <label class="col-xs-3 col-form-label">Motivo Consulta: </label>
+                            <label class="col-xs-3 col-form-label">Dirección Urgencia: </label>
                             <div class="col-xs-9">'.
-                                $row['motivo']
+                                $row['direccion']
                             .'</div>
                         </div>                               
 
                         <div class="form-group row">
-                            <label class="col-xs-3 col-form-label">Diagnostico: </label>                        
-                                <div class="col-xs-9">'.
-                                $row['diagnostico']
+                            <label class="col-xs-2 col-form-label">Temperatura: </label>                        
+                                <div class="col-xs-4">'.
+                                $row['temperatura']
                             .'</div>                          
                         </div>
                             
                         <div class="form-group row">
-                            <label class="col-xs-3 col-form-label">Complemento Diagnostico: </label>
-                            <div class="col-xs-9">'.
-                                $row['complemento']
+                            <label class="col-xs-2 col-form-label">Pulso Cardiaco: </label>
+                            <div class="col-xs-4">'.
+                                $row['pulso']
                             .'</div>
                         </div>
                             
                         <div class="form-group row">
-                            <label class="col-xs-3 col-form-label">Procedimiento Diagnostico: </label>
-                            <div class="col-xs-9">'.
-                                $row['procedimiento']
+                            <label class="col-xs-2 col-form-label">Ritmo Cardiaco: </label>
+                            <div class="col-xs-4">'.
+                                $row['frespiratorio']
                             .'</div>
                         </div>
                             
                         <div class="form-group row">
-                            <label class="col-xs-3 col-form-label">Indicaciones Medicas: </label>
-                            <div class="col-xs-9">'.
-                                $row['indicacion']
+                            <label class="col-xs-2 col-form-label">Presión Arterial: </label>
+                            <div class="col-xs-4">'.
+                                $row['presion']
                             .'</div>
                         </div>
                               
                         <div class="form-group row">
-                            <label class="col-xs-3 col-form-label">Egreso: </label>
+                            <label class="col-xs-2 col-form-label">Saturación Oxigeno: </label>
+                            <div class="col-xs-4">'.
+                                $row['saturacion']
+                            .'</div>
+                                
+                        <div class="form-group row">
+                            <label class="col-xs-3 col-form-label">Procedimiento Diagnostico: </label>
                             <div class="col-xs-9">'.
-                                $row['egreso']
-                            .'</div>';
+                                $row['acciones']
+                            .'</div>
+                        </div>';
                     }
                 }else{
-                    echo '<script>alert("Error al acceder al control");</script>';
+                    echo '<script>alert("Error al acceder a la urgencia medica");</script>';
                 }
                 ?>
                         </div>
