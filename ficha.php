@@ -79,6 +79,7 @@
                             $peso=$row['Peso'];
                             $altura=$row['Altura'];
                             $imc=round($peso/(($altura)*2),3);
+                            $rut=$row['Rut'];
                             
                             echo '<div class="header-section text-center">
                                     <h2>Ficha N°'. $row['Rut'].'</h2>
@@ -130,6 +131,52 @@
                         }else{
                             echo '<script>alert("La ficha no existe");</script>';
                         }
+                 
+                        
+                        
+                $sql1="SELECT *FROM enfermedad WHERE Rut=".$rut;
+                
+                $result1=$conn->query($sql1);
+
+                if($result1->num_rows>0){
+                    
+                    echo '<div class="row">
+                                <div class="header-section text-center">
+                                    <h4>Enfermedades Cronicas Asociadas</h4>
+                                    <img src="img/urgencia.png" width="50">
+                                    <hr class="bottom-line">
+                                </div>
+                                <div class="feature-info">
+                                
+                                <table class="pacientes">
+                                <thead>
+                                <tr>
+                                <th>Nombre Enfermedad</th>
+                                <th>Medicamento</th>
+                                <th>Dosis</th>     
+                                <th>Periodo(hr)</th>
+                                </tr>
+                                </thead>
+                                <tbody>';
+                    
+                    while($row = $result1->fetch_assoc()){
+                        
+                        echo'<tr>
+                                <td>'. $row['NomEnfermedad'] . '</td> 
+                                <td>'. $row['NomMedicamento'].'</td>                          
+                                <td>'.$row['DosisMg'].'</td>
+                                <td>'. $row['PeriodoHr'] . '</td> 
+//                               
+                            </tr>';
+                    }
+                            
+                    echo '</tbody></table>'
+                        . '</div>
+                        </div>';
+                }else{
+                    echo '<div style="text-align:center" ><h2>No hay urgencias medicas registradas.</h2></div>';
+                }
+                  $conn->close();      
                     ?>
 
             </div>

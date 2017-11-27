@@ -99,19 +99,15 @@
                 }else{
                     echo '<div style="text-align:center" ><h2>No hay controles registrados</h2></div>';
                 }
-            ?>
-            </div>
+        
+            echo '</div>
             
-                        <div class="row">
-            <?php
-            
-                $rut=$_GET['rut'];
-            
-                require 'conexion.php';
-                $sql1="SELECT *FROM urgencia WHERE Rut=$rut";
+                        <div class="row">';
+          
+                $sql1="SELECT *FROM urgencia WHERE run=".$rut;
                 $result1=$conn->query($sql1);
 
-                if($result->num_rows>0){
+                if($result1->num_rows>0){
                     
                     echo '<div class="row">
                                 <div class="header-section text-center">
@@ -136,7 +132,7 @@
                                 </thead>
                                 <tbody>';
                     
-                    while($row = $result->fetch_assoc()){
+                    while($row = $result1->fetch_assoc()){
                         
                         echo'<tr>
                                 <td>'. $row['fecha'] . '</td> 
@@ -145,9 +141,8 @@
                                 <td>'. $row['pulso'] . '</td> 
                                 <td>'. $row['frespiratorio'].'</td>                          
                                 <td>'.$row['presion'].'</td>
-                                <td>'. $row['saturacion'] . '</td> 
-                                <td>'. $row['acciones'].'</td>                          
-                                <td>'. "<a href = 'verUrgencia.php?run=" . $row["run"]. '&codUrgencia='. $row["codUrgencia"]."'>Ver Urgencia </a>".'</td>
+                                <td>'. $row['saturacion'] . '</td>                         
+                                <td>'. "<a href = 'verUrgencia.php?run=" . $rut. '& codUrgencia='. $row["codUrgencia"]."'>Ver Urgencia </a>".'</td>
                             </tr>';
                     }
                             
@@ -157,6 +152,7 @@
                 }else{
                     echo '<div style="text-align:center" ><h2>No hay urgencias medicas registradas.</h2></div>';
                 }
+                $conn->close();
             ?>
             </div>
             

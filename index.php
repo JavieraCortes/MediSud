@@ -46,8 +46,7 @@
             <div class="login-box-body">
               <p class="login-box-msg">Ingresa tus Datos para Iniciar Sesión</p>
               <div class="form-group">
-                  
-                  
+                               
                  <form action="index.php" method="post">
                     <div class="form-group has-feedback">
                         <input class="form-control" placeholder="Usuario" name="usuario" type="number" autocomplete="off" /> 
@@ -61,9 +60,7 @@
                         </div>
                     </div>
                 </form>
-                  
-                  
-                  
+           
               </div>
             </div>
           </div>
@@ -75,42 +72,45 @@
     <div class="row">
         
         <?php
-                  
-                    if(isset($_POST['boton'])){
-                        $user = $_POST['usuario'];
-                        $pass = md5($_POST['contra']);
-                        
-                        require 'conexion.php';
-                        $sql="select * from usuario where usuario=$user";
-                        $result = $conn->query($sql);
-                        
-                        if($result->num_rows>0){
-                            while($row = $result->fetch_assoc()){
-                                
-                                if($pass == $row['pass']){
-                                    
-                                    session_start();
-                                    $_SESSION['activo'] = true;
-                                    $_SESSION['user'] = $row['usuario'];
-                                    $_SESSION['nombre'] = $row['nombre'];
-                                    $_SESSION['tipo'] = $row['tipoUsuario'];
-                                    
-                                    if($row['tipoUsuario'] == 'Paciente'){
-                                        header('Location: accesoPac.php');
-                                    }
-                                    if($row['tipoUsuario'] == 'Doctor'){
-                                        header('Location: accesoMed.php');
-                                    }
-                                }else{
-                                    echo '<script>alert("Contraseña incorrecta");</script>';
-                                }
+
+            if(isset($_POST['boton'])){
+                $user = $_POST['usuario'];
+                $pass = md5($_POST['contra']);
+
+                require 'conexion.php';
+                $sql="select * from usuario where usuario=$user";
+                $result = $conn->query($sql);
+
+                if($result->num_rows>0){
+                    while($row = $result->fetch_assoc()){
+
+                        if($pass == $row['pass']){
+
+                            session_start();
+                            $_SESSION['activo'] = true;
+                            $_SESSION['user'] = $row['usuario'];
+                            $_SESSION['nombre'] = $row['nombre'];
+                            $_SESSION['tipo'] = $row['tipoUsuario'];
+
+                            if($row['tipoUsuario'] == 'Paciente'){
+                                header('Location: accesoPac.php');
+                            }
+                            if($row['tipoUsuario'] == 'Doctor'){
+                                header('Location: accesoMed.php');
+                            }
+                            if($row['tipoUsuario'] == 'Admin'){
+                                header('Location: accesoAdm.php');
                             }
                         }else{
-                            echo '<script>alert("El usuario no Existe");</script>';
+                            echo '<script>alert("Contraseña incorrecta");</script>';
                         }
-                        $conn->close();
                     }
-                  ?>
+                }else{
+                    echo '<script>alert("El usuario no Existe");</script>';
+                }
+                $conn->close();
+            }
+        ?>
         
     </div>
     

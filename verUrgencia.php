@@ -24,21 +24,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-            
-            <?php
-          
-            session_start();
-            
-            if($_SESSION['tipo'] == 'Doctor'){
-                echo '<li><a href="pacientes.php">Pacientes</a></li>
-                    <li><a href="estadisticas.php">Estadisticas</a></li>
-                    <li><a href="formPac.php">Ingresar Paciente</a></li> ';
-            }else{
-                echo '<li><a href="FichaPac.php">Mi Ficha</a></li>
-                     <li><a href="ControlesPac.php">Controles</a></li>';
-            }
-                              
-           ?>
+
+        <li><a href="pacientes.php">Pacientes</a></li>
+        <li><a href="estadisticas.php">Estadisticas</a></li>
+        <li><a href="formPac.php">Ingresar Paciente</a></li>
+
           <li><form action="verControl.php" method="post">
                   <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
           </form>
@@ -52,7 +42,7 @@
     <section id ="feature" class="section-padding">
         <div class="container">
              <?php
-                    
+                    session_start();
                     echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
                     if(isset($_POST['salir'])){
                     session_destroy();
@@ -62,17 +52,17 @@
             <div class="row">
                 <div class="header-section text-center">
                     <?php
-                        $rut=$_GET['rut'];
-                        $registro=$_GET['registro'];
+                        $rut=$_GET['run'];
+                        $codUrg=$_GET['codUrgencia'];
                         require 'conexion.php';
-                        $sql="SELECT *FROM urgencia WHERE Rut=$rut and Registro=$registro";
+                        $sql="SELECT *FROM urgencia WHERE run=$rut and codUrgencia=$codUrg";
                         $result=$conn->query($sql);
 
                         if($result->num_rows>0){
                             while($row=$result->fetch_assoc()){
                         echo '
-                    <h2>Urgencia N°'. $row['Registro'].'</h2>
-                    <p>Control Medico del paciente Rut: '.$row['Rut'].' </p>
+                    <h2>Urgencia N°'. $row['codUrgencia'].'</h2>
+                    <p>Control Medico del paciente Rut: '.$row['run'].' </p>
                     <p>Control Registrado en la Fecha y Hora: '.$row['fecha'].'</p>
                     <img src="img/control.png" width="50">
                     <hr class="bottom-line">
@@ -89,45 +79,44 @@
                         </div>                               
 
                         <div class="form-group row">
-                            <label class="col-xs-2 col-form-label">Temperatura: </label>                        
+                            <label class="col-xs-3 col-form-label">Temperatura: </label>                        
                                 <div class="col-xs-4">'.
                                 $row['temperatura']
                             .'</div>                          
                         </div>
                             
                         <div class="form-group row">
-                            <label class="col-xs-2 col-form-label">Pulso Cardiaco: </label>
+                            <label class="col-xs-3 col-form-label">Pulso Cardiaco: </label>
                             <div class="col-xs-4">'.
                                 $row['pulso']
                             .'</div>
                         </div>
                             
                         <div class="form-group row">
-                            <label class="col-xs-2 col-form-label">Ritmo Cardiaco: </label>
+                            <label class="col-xs-3 col-form-label">Ritmo Cardiaco: </label>
                             <div class="col-xs-4">'.
                                 $row['frespiratorio']
                             .'</div>
                         </div>
                             
                         <div class="form-group row">
-                            <label class="col-xs-2 col-form-label">Presión Arterial: </label>
+                            <label class="col-xs-3 col-form-label">Presión Arterial: </label>
                             <div class="col-xs-4">'.
                                 $row['presion']
                             .'</div>
                         </div>
                               
                         <div class="form-group row">
-                            <label class="col-xs-2 col-form-label">Saturación Oxigeno: </label>
+                            <label class="col-xs-3 col-form-label">Saturación Oxigeno: </label>
                             <div class="col-xs-4">'.
                                 $row['saturacion']
-                            .'</div>
-                                
-                        <div class="form-group row">
+                            .'</div>                            
+                        </div>'.
+                        '<div class="form-group row">
                             <label class="col-xs-3 col-form-label">Procedimiento Diagnostico: </label>
                             <div class="col-xs-9">'.
                                 $row['acciones']
-                            .'</div>
-                        </div>';
+                            .'</div>';
                     }
                 }else{
                     echo '<script>alert("Error al acceder a la urgencia medica");</script>';
