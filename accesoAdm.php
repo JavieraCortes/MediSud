@@ -107,7 +107,6 @@
                                 echo '<script>alert("El usuario se ha Ingresado Correctamente")</script>';
                                 $conn->close();
 
-                                header('Location: /MediSud/accesoAdm.php');
                             }  
 
                         ?>

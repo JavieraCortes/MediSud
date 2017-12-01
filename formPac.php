@@ -104,17 +104,17 @@
                 </div>               
                 <div class="form-group">
                     Domicilio:
-                    <input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="Domicilio del Paciente" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                    <input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="Domicilio del Paciente" data-rule="minlen:4" />
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
                     Comuna
-                    <input type="text" class="form-control" name="comuna" id="comuna" placeholder="Comuna" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                    <input type="text" class="form-control" name="comuna" id="comuna" placeholder="Comuna" data-rule="minlen:4" />
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
                     Localidad
-                    <input type="text" class="form-control" name="localidad" id="localidad" placeholder="Localidad" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                    <input type="text" class="form-control" name="localidad" id="localidad" placeholder="Localidad" data-rule="minlen:4" />
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
@@ -150,7 +150,7 @@
                 </div>
                 <div class="form-group">
                     Peso:
-                    <input type="number" class="form-control" name="peso" id="peso" placeholder="Peso Paciente (kg)" />
+                    <input type="number" class="form-control" name="peso" id="peso" min="0" placeholder="Peso Paciente (kg)" />
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
@@ -227,7 +227,9 @@
                     $result = $conn->query($sql);
                     
                     if($conn->affected_rows==0){                
-                        echo '<h2>No se pudo ingresar el paciente</h2>';
+                        echo "<script>alert('No se pudo ingresar el Paciente')</script>";
+                    }else{
+                        echo "<script>alert('Paciente Ingresado')</script>";
                     }
                     
                     $conn->close();
