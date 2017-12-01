@@ -45,7 +45,18 @@
           
         <?php
             session_start();
-            echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>';
+            echo '<br><div class="row">
+                    <div class="col-md-1">
+                        <form action="accesoMed.php">
+                            <button type="submit" class="btn btn-primary btn-xs"> < </button>
+                        </form>
+                        
+                    </div>
+                    <div class="col-md-11">
+                        <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
+                    </div>
+                </div>';
+            
             if(isset($_POST['salir'])){
                 session_destroy();
                 header('Location: index.php');

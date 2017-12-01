@@ -41,7 +41,25 @@
         <div class="container">
             <?php
                     session_start();
-                    echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>';
+                    
+                    $rut=$_GET['ficha'];
+                    require 'conexion.php';
+                    $s="SELECT CodRFID FROM paciente WHERE Rut=$rut";
+                    $r=$conn->query($s);
+
+                    $row=$r->fetch_assoc();
+
+                    echo '<br><div class="row">
+                        <div class="col-md-1">
+                            <a href="ficha.php?tag='.$row['CodRFID'].'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
+
+                        </div>
+                        <div class="col-md-11">
+                            <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
+                        </div>
+                    </div>';
+                    
+                    
                     if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');

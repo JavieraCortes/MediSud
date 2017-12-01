@@ -42,7 +42,18 @@
           
           <?php
                     session_start();
-                    echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>';
+                    echo '<br><div class="row">
+                            <div class="col-md-1">
+                                <form action="accesoMed.php">
+                                    <button type="submit" class="btn btn-primary btn-xs"> < </button>
+                                </form>
+
+                            </div>
+                            <div class="col-md-11">
+                                <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
+                            </div>
+                        </div>';
+                    
                     if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');
@@ -215,10 +226,7 @@
                     $sql= "Insert into paciente (Rut, Dv, Nombre, FechaNac, Sexo, Domicilio, Comuna, Localidad, Fono, Prevision, Altura, Peso, TipoSangre, FactorRH, alergias, NombreFamiliar, TelefonoFamiliar, CodRFID) values ('$rut','$dv', '$nombre', '$fechanac', '$genero', '$domicilio', '$comuna', '$localidad', '$fono', '$prevision', '$altura', '$peso', '$tiposangre', '$factorrh', '$alergia', '$nomfam', '$fonofam', '$cod')";
                     $result = $conn->query($sql);
                     
-                    if($result->num_rows>0){
-                        //header('Location: MediSud/pacientes.php');
-                        echo "<script languaje='javascript'>window.location='pacientes.php'</script>";
-                    }else{
+                    if($conn->affected_rows==0){                
                         echo '<h2>No se pudo ingresar el paciente</h2>';
                     }
                     
