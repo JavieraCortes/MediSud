@@ -45,7 +45,7 @@
           
         <?php
             session_start();
-            echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+            echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>';
             if(isset($_POST['salir'])){
                 session_destroy();
                 header('Location: index.php');
@@ -61,28 +61,28 @@
           </div>
             
             <div class="row">
-              <div class="col-lg-10">
-                  
-                  
-                    <form id="form1" method="get" class="form-horizontal mitad" action="ficha.php">
-                        <div class="form-group row">
+              <div class="col-lg-10">    
+                    <form id="form1" name="form1" method="get" class="form-horizontal mitad" action="ficha.php">
+                        
+                        <div class="form-group row" style="margin-right: 0">
                         
                             <label class="col-xs-3 col-form-label">Tag RFID Asociado:</label>
                             <div class="col-xs-5">
-                              <input class="form-control" type="text" min="0" maxlength="20" name="tag" />
+                              <input class="form-control" type="text" min="0" maxlength="20" id="tag" name="tag" />
                             </div>
                             
-                            <div class="col-xs-3 ">                                 
+                            <div class="col-xs-2 ">                                 
                                 <button type="submit" name="buscar" class="btn btn-primary">Buscar Paciente</button>                                
                             </div>
+                            
+                            <div class="col-xs-2 ">  
+                                <a href="lector.php" class="btn btn-primary">Leer con lector</a>
+                            </div>
                         </div>
-                      
                     </form>
-                  
-                </div>
+                </div>              
             </div>
-            
-            
+
           <div class="container">
             <div class="row">
                 <div class="col-lg-10">

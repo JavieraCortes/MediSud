@@ -48,10 +48,8 @@
             <div class="row" style="text-align: right">
               <?php
                 session_start();
-                echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
-                
-                
-                
+                echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>';
+
                 if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');

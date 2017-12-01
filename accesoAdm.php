@@ -44,7 +44,7 @@
                 <div class="header-section text-center">
                     <?php
                     
-                    echo '<br><p style="text-align:right">Bienvenido(a): '.$_SESSION['nombre'].'</p>';
+                    echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />Bienvenido(a): '.$_SESSION['nombre'].'</p>';
                     if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');

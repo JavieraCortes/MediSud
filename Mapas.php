@@ -115,7 +115,7 @@
           <div class="row" style="text-align: right">
               <?php
                 session_start();
-                echo '<h2>Sr(a): '.$_SESSION['nombre'].'</h2>';
+                echo '<h2><img src="img/blue.png" width="20" />Sr(a): '.$_SESSION['nombre'].'</h2>';
                 if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');

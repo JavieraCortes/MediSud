@@ -43,7 +43,7 @@
             <div class="row" style="text-align: right">
               <?php
                 session_start();
-                echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>';
                 
                 
                 if(isset($_POST['salir'])){
@@ -65,7 +65,7 @@
                     
                     echo '<div class="row">
                                 <div class="header-section text-center">
-                                    <h2>Ficha N°'. $rut.'</h2>
+                                    <h2>Ficha N°'. $usu.'</h2>
                                     <img src="img/control.png" width="50">
                                     <hr class="bottom-line">
                                 </div>

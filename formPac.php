@@ -38,12 +38,11 @@
     <!--/ Navigation bar-->
     <!--Contact-->
     <section id ="contact" class="section-padding">
-      <div class="container">
-          
+      <div class="container">         
           
           <?php
                     session_start();
-                    echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                    echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>';
                     if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');
@@ -95,6 +94,11 @@
                 <div class="form-group">
                     Domicilio:
                     <input type="text" class="form-control" name="domicilio" id="domicilio" placeholder="Domicilio del Paciente" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                    <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                    Comuna
+                    <input type="text" class="form-control" name="comuna" id="comuna" placeholder="Comuna" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
@@ -195,6 +199,7 @@
                     $fechanac= $_POST['fechanac'];
                     $genero= $_POST['genero'];  
                     $domicilio= $_POST['domicilio'];
+                    $comuna= $_POST['comuna'];
                     $localidad= $_POST['localidad'];     
                     $fono=$_POST['telefono'];
                     $prevision= $_POST['prevision'];
@@ -207,11 +212,19 @@
                     $fonofam= $_POST['fonofam'];
 
                     require "conexion.php";            
-                    $sql= "Insert into paciente (Rut, Dv, Nombre, FechaNac, Sexo, Domicilio, Localidad, Fono, Prevision, Altura, Peso, TipoSangre, FactorRH, alergias, NombreFamiliar, TelefonoFamiliar, CodRFID) values ('$rut','$dv', '$nombre', '$fechanac', '$genero', '$domicilio', '$localidad', '$fono', '$prevision', '$altura', '$peso', '$tiposangre', '$factorrh', '$alergia', '$nomfam', '$fonofam', '$cod')";
+                    $sql= "Insert into paciente (Rut, Dv, Nombre, FechaNac, Sexo, Domicilio, Comuna, Localidad, Fono, Prevision, Altura, Peso, TipoSangre, FactorRH, alergias, NombreFamiliar, TelefonoFamiliar, CodRFID) values ('$rut','$dv', '$nombre', '$fechanac', '$genero', '$domicilio', '$comuna', '$localidad', '$fono', '$prevision', '$altura', '$peso', '$tiposangre', '$factorrh', '$alergia', '$nomfam', '$fonofam', '$cod')";
                     $result = $conn->query($sql);
+                    
+                    if($result->num_rows>0){
+                        //header('Location: MediSud/pacientes.php');
+                        echo "<script languaje='javascript'>window.location='pacientes.php'</script>";
+                    }else{
+                        echo '<h2>No se pudo ingresar el paciente</h2>';
+                    }
+                    
                     $conn->close();
 
-                    header('Location: /MediSud/pacientes.php');
+                    
                 }  
 
                 ?>

@@ -1,3 +1,9 @@
+<?php   
+    $exist = file_exists("Archivo.txt");
+    if($exist){
+        $borrado = unlink("Archivo.txt");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,11 +59,22 @@
     </nav>
     <!--/ Navigation bar-->
     <!--Feature-->
+    
     <section id ="feature" class="section-padding">
         <div class="container">
             <?php
                 
-                echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                echo '<br><div class="row">
+                    <div class="col-md-1">
+                        <form action="pacientes.php">
+                            <button type="submit" class="btn btn-primary btn-xs"> < </button>
+                        </form>
+                        
+                    </div>
+                    <div class="col-md-11">
+                        <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
+                    </div>
+                </div>';
                 if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');
@@ -67,7 +84,7 @@
                 
                 <?php
                                 
-                     $tag=$_GET['tag'];
+                    $tag=$_GET['tag'];
                     
                     require 'conexion.php';
                     $sql="SELECT *FROM paciente WHERE CodRFID='$tag'";
@@ -90,7 +107,7 @@
 
                                     <div class="row">                    
                                       <div align="center" class="col-md-3 col-sm-3 col-xs-3">
-                                             <a href="controles.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ver Controles</button></a>
+                                             <a href="controles.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Controles y Urgencias</button></a>
                                       </div>
                                      <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
                                              <a href = "formControl.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ingresar Control</button></a>
@@ -110,7 +127,7 @@
                                             RUT: '.$row['Rut'].' - '.$row['Dv'].'<br>
                                             Tag RFID Asociado: '.$row['CodRFID'].'<br>
                                             Fecha Nacimiento: '.$row['FechaNac'].'<br>
-                                            Domicilio: '.$row['Domicilio'].', '.$row['Localidad'].'<br>
+                                            Domicilio: '.$row['Domicilio'].', '.$row['Comuna']. ', '.$row['Localidad'].'<br>
                                             Telefono Contacto: '.$row['Fono'].'<br>
                                             Previsión: '.$row['Prevision'].'<br><br>
                                       </div>
@@ -131,8 +148,6 @@
                         }else{
                             echo '<script>alert("La ficha no existe");</script>';
                         }
-                 
-                        
                         
                 $sql1="SELECT *FROM enfermedad WHERE Rut=".$rut;
                 
@@ -166,7 +181,7 @@
                                 <td>'. $row['NomMedicamento'].'</td>                          
                                 <td>'.$row['DosisMg'].'</td>
                                 <td>'. $row['PeriodoHr'] . '</td> 
-//                               
+                               
                             </tr>';
                     }
                             
@@ -174,7 +189,7 @@
                         . '</div>
                         </div>';
                 }else{
-                    echo '<div style="text-align:center" ><h2>No hay urgencias medicas registradas.</h2></div>';
+                    echo '<div style="text-align:center" ><h2>No hay Enfermedades Crónicas Asociadas.</h2></div>';
                 }
                   $conn->close();      
                     ?>

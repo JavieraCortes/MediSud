@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2017 a las 05:15:54
+-- Tiempo de generación: 01-12-2017 a las 02:50:50
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -30,7 +30,7 @@ CREATE TABLE `control` (
   `Registro` int(6) NOT NULL,
   `Rut` int(8) NOT NULL,
   `motivo` varchar(200) NOT NULL,
-  `fecha` datetime NOT NULL,
+  `fecha` varchar(20) NOT NULL,
   `diagnostico` varchar(50) NOT NULL,
   `complemento` text NOT NULL,
   `procedimiento` text NOT NULL,
@@ -43,14 +43,14 @@ CREATE TABLE `control` (
 --
 
 INSERT INTO `control` (`Registro`, `Rut`, `motivo`, `fecha`, `diagnostico`, `complemento`, `procedimiento`, `indicacion`, `egreso`) VALUES
-(1, 17819253, 'Dolor intenso en la parte superior del abdomen', '2017-11-20 13:30:00', 'Colico Biliar', 'Problema en la vesicula biliar.', 'Extirpar la vesicula biliar. Tecnica laparoscopica.\r\n', 'Evite el consumo de bebidas alcoholicas. El alcohol podria danar la vesicula biliar y empeorar sus sintomas. Mantenga un peso saludable. ', 'Hospitalizacion'),
-(2, 17819253, 'Dificultad al Respirar', '2017-11-21 14:30:00', 'Bronquitis', 'Inflamacion de los conductos que llevan aire a los pulmones. ', 'Examenes de diagnostico uso de espirometro.', 'Descansar, tomar liquidos y aspirina (para adultos) y acetaminofen (paracetamol) para bajar la fiebre.', 'Alta Medica'),
-(3, 17819253, 'Intoxicacion Etilica ', '2017-11-22 14:00:00', 'Arritmia Grave', 'Intoxicacion etilica provoco arritmia grave.', 'Se usan betabloqueantes (Metoprolol y atenolol) para disminuir las frecuencias cardiacas rapidas.', 'Mantener al paciente hospitalizado y realizar valoracion de la frecuencia cardiaca, tension arterial, perfusion, estado de conciencia y diaforesis cada 8 horas.', 'Hospitalizacion'),
-(4, 18852886, 'Dolor de Estomago', '2017-11-23 16:30:00', 'Diarrea', 'Alteracion intestinal.', 'Informacion otorgada por el paciente.', 'Beber agua, jugos de frutas, bebidas deportivas, bebidas gaseosas sin cafeina y caldos salados para reponer los fluidos y electrolitos perdidos. A medida que los sintomas mejoran, se pueden comer alimentos suaves y blandos.\r\nTomar loperamida 2mg cada 12 horas.', 'Alta Medica'),
-(5, 19268796, 'Dificultad al Respirar', '2017-11-24 13:00:00', 'Crisis Obstructiva', 'Obstruccion bronquial aguda con sibilancias', 'Verificacion de obstruccion de las vias respiratorias.', 'Uso de salbutamol cada 4 horas.', 'Alta Medica'),
-(6, 19581730, 'Dificultad repentina para caminar, mareos, perdida de equilibrio.', '2017-11-24 15:30:05', 'Accidente Vascular', 'Obstruccion de un vaso sanguineo que interrumpe repentinamente el suministro de sangre a una parte del cerebro.', 'Se realiza Tomografia Computada y resonancia magnetica', 'Terapia aguda para el accidente vascular para detener la progresion del ataque, disolviendo el coagulo que bloquea el riego sanguineo o deteniendo la hemorragia segun sea el origen del ataque. ', 'Hospitalizacion'),
-(7, 18852886, 'Dolor intenso en la parte superior del abdomen', '2017-11-25 12:30:00', 'Colico Biliar', 'Problema en la vesicula biliar.', 'Extirpar la vesicula biliar. Tecnica laparoscopica.\n', 'Evite el consumo de bebidas alcoholicas. El alcohol podria danar la vesicula biliar y empeorar sus sintomas. Mantenga un peso saludable. ', 'Hospitalizacion'),
-(8, 19581730, 'Dolor de Estomago', '2017-11-25 13:30:00', 'Diarrea', 'Alteracion intestinal.', 'Informacion otorgada por el paciente.\n', 'Beber agua, jugos de frutas, bebidas deportivas, bebidas gaseosas sin cafeina y caldos salados para reponer los fluidos y electrolitos perdidos. A medida que los sintomas mejoran, se pueden comer alimentos suaves y blandos.\nTomar loperamida 2mg cada 12 horas.', 'Alta Medica');
+(1, 17819253, 'Dolor intenso en la parte superior del abdomen', '20-11-2017 13:30:00', 'Colico Biliar', 'Problema en la vesicula biliar.', 'Extirpar la vesicula biliar. Tecnica laparoscopica.\r\n', 'Evite el consumo de bebidas alcoholicas. El alcohol podria danar la vesicula biliar y empeorar sus sintomas. Mantenga un peso saludable. ', 'Hospitalizacion'),
+(2, 17819253, 'Dificultad al Respirar', '21-11-2017 14:30:00', 'Bronquitis', 'Inflamacion de los conductos que llevan aire a los pulmones. ', 'Examenes de diagnostico uso de espirometro.', 'Descansar, tomar liquidos y aspirina (para adultos) y acetaminofen (paracetamol) para bajar la fiebre.', 'Alta Medica'),
+(3, 17819253, 'Intoxicacion Etilica ', '22-11-2017 14:00:00', 'Arritmia Grave', 'Intoxicacion etilica provoco arritmia grave.', 'Se usan betabloqueantes (Metoprolol y atenolol) para disminuir las frecuencias cardiacas rapidas.', 'Mantener al paciente hospitalizado y realizar valoracion de la frecuencia cardiaca, tension arterial, perfusion, estado de conciencia y diaforesis cada 8 horas.', 'Hospitalizacion'),
+(4, 18852886, 'Dolor de Estomago', '23-11-2017 16:30:00', 'Diarrea', 'Alteracion intestinal.', 'Informacion otorgada por el paciente.', 'Beber agua, jugos de frutas, bebidas deportivas, bebidas gaseosas sin cafeina y caldos salados para reponer los fluidos y electrolitos perdidos. A medida que los sintomas mejoran, se pueden comer alimentos suaves y blandos.\r\nTomar loperamida 2mg cada 12 horas.', 'Alta Medica'),
+(5, 19268796, 'Dificultad al Respirar', '24-11-2017 13:00:00', 'Crisis Obstructiva', 'Obstruccion bronquial aguda con sibilancias', 'Verificacion de obstruccion de las vias respiratorias.', 'Uso de salbutamol cada 4 horas.', 'Alta Medica'),
+(6, 19581730, 'Dificultad repentina para caminar, mareos, perdida de equilibrio.', '24-11-2017 15:30:05', 'Accidente Vascular', 'Obstruccion de un vaso sanguineo que interrumpe repentinamente el suministro de sangre a una parte del cerebro.', 'Se realiza Tomografia Computada y resonancia magnetica', 'Terapia aguda para el accidente vascular para detener la progresion del ataque, disolviendo el coagulo que bloquea el riego sanguineo o deteniendo la hemorragia segun sea el origen del ataque. ', 'Hospitalizacion'),
+(7, 18852886, 'Dolor intenso en la parte superior del abdomen', '25-11-2017 12:30:00', 'Colico Biliar', 'Problema en la vesicula biliar.', 'Extirpar la vesicula biliar. Tecnica laparoscopica.\n', 'Evite el consumo de bebidas alcoholicas. El alcohol podria danar la vesicula biliar y empeorar sus sintomas. Mantenga un peso saludable. ', 'Hospitalizacion'),
+(8, 19581730, 'Dolor de Estomago', '25-11-2017 13:30:00', 'Diarrea', 'Alteracion intestinal.', 'Informacion otorgada por el paciente.\n', 'Beber agua, jugos de frutas, bebidas deportivas, bebidas gaseosas sin cafeina y caldos salados para reponer los fluidos y electrolitos perdidos. A medida que los sintomas mejoran, se pueden comer alimentos suaves y blandos.\nTomar loperamida 2mg cada 12 horas.', 'Alta Medica');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,8 @@ CREATE TABLE `enfermedad` (
 
 INSERT INTO `enfermedad` (`Rut`, `NomEnfermedad`, `NomMedicamento`, `DosisMg`, `PeriodoHr`) VALUES
 (17819253, 'Diabetes Mellitus', 'Metformina', '500', 12),
-(17819253, 'VIH/SIDA', 'Cancer', '800', 8),
+(17819253, 'Hemofilia', 'Ibuprofeno', '120', 12),
+(17819253, 'VIH/SIDA', 'Atazanavir', '150', 12),
 (18852886, 'Hipertension', 'Betaplex', '6', 24),
 (18852886, 'Hipotiroidismo', 'Livotiroxina', '100', 24),
 (19268796, 'Diabetes Mellitus', 'Metformina', '500', 12),
@@ -93,6 +94,7 @@ CREATE TABLE `paciente` (
   `FechaNac` date NOT NULL,
   `Sexo` char(1) NOT NULL,
   `Domicilio` varchar(80) NOT NULL,
+  `Comuna` varchar(30) NOT NULL,
   `Localidad` varchar(20) NOT NULL,
   `Fono` int(9) NOT NULL,
   `Prevision` varchar(15) NOT NULL,
@@ -110,12 +112,12 @@ CREATE TABLE `paciente` (
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`Rut`, `Dv`, `Nombre`, `FechaNac`, `Sexo`, `Domicilio`, `Localidad`, `Fono`, `Prevision`, `Altura`, `Peso`, `TipoSangre`, `FactorRH`, `alergias`, `NombreFamiliar`, `TelefonoFamiliar`, `CodRFID`) VALUES
-(17819253, '1', 'Mario Andres Tapia Contreras', '1997-04-23', 'M', 'Bicentenario Jorge Llanos 188', 'Los Andes', 967091213, 'FONASA A', '1.85', '95.00', 'B', 'POSITIVO', 'Sin Alergias', 'Julia Rosa Contreras Delgado', 950998225, 'C006DC3A'),
-(18852886, '4', 'Oliver Osvaldo Consterla Araya', '1991-09-19', 'M', 'Villa Departamental block 1501 dpto 13', 'San Felipe', 987612427, 'FONASA C', '1.70', '82.00', 'AB', 'NEGATIVO', 'Amoxicilina', 'Valentino Andres Consterla Araya', 993034643, '36C69EBB'),
-(19268796, '9', 'Javiera Alejandra Cortes Celedon', '1996-09-21', 'F', 'Galicia 127 Villa Espana Rinconada', 'Los Andes', 996122709, 'FONASA C', '1.61', '82.00', 'O', 'POSITIVO', 'Sin Alergias', 'Mitzi Andrea Sanchez Pereira', 974718521, '30FCDC3A'),
-(19581730, '8', 'Diego Ignacio Ramirez Machuca', '1994-07-10', 'M', 'San Franciso s/n Curimon', 'San Felipe', 989606805, 'FONASA C', '1.65', '61.00', 'O', 'POSITIVO', 'Sulfamidas', 'Jose Miguel Ramirez Nehemias ', 957454581, '20B2CF3A'),
-(19581853, '3', 'Mitzi Andrea Sanchez Pereira', '1997-03-17', 'F', 'Los Claveles 108 Villa El Castillo Calle Larga', 'Los Andes', 974718521, 'FONASA C', '1.55', '72.00', 'O', 'POSITIVO', 'Sin Alergias', 'Fanny Andrea Pereira Contreras', 997419778, '0CFA4949');
+INSERT INTO `paciente` (`Rut`, `Dv`, `Nombre`, `FechaNac`, `Sexo`, `Domicilio`, `Comuna`, `Localidad`, `Fono`, `Prevision`, `Altura`, `Peso`, `TipoSangre`, `FactorRH`, `alergias`, `NombreFamiliar`, `TelefonoFamiliar`, `CodRFID`) VALUES
+(17819253, '1', 'Mario Andres Tapia Contreras', '1997-04-23', 'M', 'Bicentenario Jorge Llanos 188', 'Los Andes', 'Los Andes', 967091213, 'FONASA A', '1.85', '95.00', 'B', 'POSITIVO', 'Sin Alergias', 'Julia Rosa Contreras Delgado', 950998225, 'C006DC3A'),
+(18852886, '4', 'Oliver Osvaldo Consterla Araya', '1991-09-19', 'M', 'Villa Departamental block 1501 dpto 13', 'San Felipe', 'San Felipe', 987612427, 'FONASA C', '1.70', '82.00', 'AB', 'NEGATIVO', 'Amoxicilina', 'Valentino Andres Consterla Araya', 993034643, '36C69EBB'),
+(19268796, '9', 'Javiera Alejandra Cortes Celedon', '1996-09-21', 'F', 'Galicia 127 Villa Espana ', 'Rinconada', 'Los Andes', 996122709, 'FONASA C', '1.61', '82.00', 'O', 'POSITIVO', 'Sin Alergias', 'Mitzi Andrea Sanchez Pereira', 974718521, '30FCDC3A'),
+(19581730, '8', 'Diego Ignacio Ramirez Machuca', '1994-07-10', 'M', 'San Franciso s/n Curimon', 'San Felipe', 'San Felipe', 989606805, 'FONASA C', '1.65', '61.00', 'O', 'POSITIVO', 'Sulfamidas', 'Jose Miguel Ramirez Nehemias ', 957454581, '20B2CF3A'),
+(19581853, '3', 'Mitzi Andrea Sanchez Pereira', '1997-03-17', 'F', 'Los Claveles 108 Villa El Castillo ', 'Calle Larga', 'Los Andes', 974718521, 'FONASA C', '1.55', '72.00', 'O', 'POSITIVO', 'Sin Alergias', 'Fanny Andrea Pereira Contreras', 997419778, '0CFA4949');
 
 -- --------------------------------------------------------
 
@@ -126,7 +128,7 @@ INSERT INTO `paciente` (`Rut`, `Dv`, `Nombre`, `FechaNac`, `Sexo`, `Domicilio`, 
 CREATE TABLE `urgencia` (
   `codUrgencia` int(5) NOT NULL,
   `run` int(8) NOT NULL,
-  `fecha` datetime NOT NULL,
+  `fecha` varchar(20) NOT NULL,
   `direccion` varchar(250) NOT NULL,
   `latitud` varchar(20) NOT NULL,
   `longitud` varchar(20) NOT NULL,
@@ -143,15 +145,15 @@ CREATE TABLE `urgencia` (
 --
 
 INSERT INTO `urgencia` (`codUrgencia`, `run`, `fecha`, `direccion`, `latitud`, `longitud`, `temperatura`, `pulso`, `frespiratorio`, `presion`, `saturacion`, `acciones`) VALUES
-(1, 18852886, '2017-10-27 13:21:25', 'Manso de Velasco 2009, San Felipe, RegiÃ³n de ValparaÃ­so', '-32.7566908', '-70.7349533', '37.0', 120, 16, '119/79', 97, 'Controlar ritmo cardiaco'),
-(2, 19581730, '2017-10-30 00:39:35', 'Arturo Prat 682, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8455055', '-70.6059225', '39.7', 90, 16, '119/79', 95, 'Se aplican compresas frias, medicamento paracetamol.'),
-(3, 19268796, '2017-11-01 12:17:01', 'Autopista Los Libertadores 421-299, Rinconada, RegiÃ³n de ValparaÃ­so', '-32.8286581', '-70.6885831', '37.0', 80, 16, '119/79', 80, 'Uso de hidrocorticoides.'),
-(4, 18852886, '2017-11-19 00:37:19', 'Salinas 201 San Felipe RegiÃ³n de ValparaÃ­so', '-32.7383613', '-70.7211567', '39.7', 80, 16, '119/79', 91, 'Se aplican compresas frias, medicamento tylenol.'),
-(5, 19581853, '2017-11-20 15:30:11', 'Arturo Prat 460-304, San Felipe, RegiÃ³n de ValparaÃ­so', '-32.7506372', '-70.7228585', '39.5', 82, 16, '119/79', 96, 'Uso de ibupirac.'),
-(6, 19581730, '2017-11-22 18:33:09', 'Arturo Prat 255-643 San Felipe RegiÃ³n de ValparaÃ­so', '-32.7496551', '-70.7268584', '39.5', 90, 17, '119/79', 80, 'Uso de oxigeno. Medicamento Paracetamol.'),
-(7, 17819253, '2017-11-26 23:45:49', 'Tres Carrera 430, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8309535', '-70.598115', '37.0', 70, 20, '140/90', 98, 'Buscar signos de descompensacion cardiaca.\r\nSe comparan presiones y pulsos en MIs y MSs.'),
-(8, 19581730, '2017-11-27 20:35:30', 'Navarro 157-211 San Felipe RegiÃ³n de ValparaÃ­so', '-32.7482225', '-70.7277836', '37.0', 70, 18, '119/79', 79, 'Uso de Oxigeno e hidrocorticoides.'),
-(9, 17819253, '2017-11-27 00:08:57', 'Gral Freire 99-1, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8372173', '-70.5961565', '39.5', 70, 16, '119/79', 97, 'Medicamento usado Tylenol');
+(1, 18852886, '27-10-2017 13:21:25', 'Manso de Velasco 2009, San Felipe, RegiÃ³n de ValparaÃ­so', '-32.7566908', '-70.7349533', '37.0', 120, 16, '119/79', 97, 'Controlar ritmo cardiaco'),
+(2, 19581730, '30-10-2017 00:39:35', 'Arturo Prat 682, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8455055', '-70.6059225', '39.7', 90, 16, '119/79', 95, 'Se aplican compresas frias, medicamento paracetamol.'),
+(3, 19268796, '01-11-2017 12:17:01', 'Autopista Los Libertadores 421-299, Rinconada, RegiÃ³n de ValparaÃ­so', '-32.8286581', '-70.6885831', '37.0', 80, 16, '119/79', 80, 'Uso de hidrocorticoides.'),
+(4, 18852886, '19-11-2017 00:37:19', 'Salinas 201 San Felipe RegiÃ³n de ValparaÃ­so', '-32.7383613', '-70.7211567', '39.7', 80, 16, '119/79', 91, 'Se aplican compresas frias, medicamento tylenol.'),
+(5, 19581853, '20-11-2017 15:30:11', 'Arturo Prat 460-304, San Felipe, RegiÃ³n de ValparaÃ­so', '-32.7506372', '-70.7228585', '39.5', 82, 16, '119/79', 96, 'Uso de ibupirac.'),
+(6, 19581730, '22-11-2017 18:33:09', 'Arturo Prat 255-643 San Felipe RegiÃ³n de ValparaÃ­so', '-32.7496551', '-70.7268584', '39.5', 90, 17, '119/79', 80, 'Uso de oxigeno. Medicamento Paracetamol.'),
+(7, 17819253, '26-11-2017 23:45:49', 'Tres Carrera 430, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8309535', '-70.598115', '37.0', 70, 20, '140/90', 98, 'Buscar signos de descompensacion cardiaca.\r\nSe comparan presiones y pulsos en MIs y MSs.'),
+(8, 19581730, '27-11-2017 20:35:30', 'Navarro 157-211 San Felipe RegiÃ³n de ValparaÃ­so', '-32.7482225', '-70.7277836', '37.0', 70, 18, '119/79', 79, 'Uso de Oxigeno e hidrocorticoides.'),
+(9, 17819253, '27-11-2017 00:08:57', 'Gral Freire 99-1, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8372173', '-70.5961565', '39.5', 70, 16, '119/79', 97, 'Medicamento usado Tylenol');
 
 -- --------------------------------------------------------
 
@@ -221,12 +223,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `control`
 --
 ALTER TABLE `control`
-  MODIFY `Registro` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Registro` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `urgencia`
 --
 ALTER TABLE `urgencia`
-  MODIFY `codUrgencia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `codUrgencia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Restricciones para tablas volcadas
 --
@@ -236,6 +238,12 @@ ALTER TABLE `urgencia`
 --
 ALTER TABLE `control`
   ADD CONSTRAINT `FK_paciente_control` FOREIGN KEY (`Rut`) REFERENCES `paciente` (`Rut`);
+
+--
+-- Filtros para la tabla `enfermedad`
+--
+ALTER TABLE `enfermedad`
+  ADD CONSTRAINT `FK_PACIENTE_ENFERMEDAD` FOREIGN KEY (`Rut`) REFERENCES `paciente` (`Rut`);
 
 --
 -- Filtros para la tabla `urgencia`

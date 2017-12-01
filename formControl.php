@@ -41,7 +41,7 @@
       <div class="container">
           <?php
                 session_start();
-                echo '<br><p style="text-align:right">'.$_SESSION['nombre'].'</p>';
+                echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>';
                 if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');
@@ -49,13 +49,12 @@
               ?>
         <div class="row">
           <div class="header-section text-center">
-            <h2>Control Paciente</h2>
-            
+            <h2>Control Paciente</h2>           
             
                 <?php 
                     $rut=$_GET['rut'];
                     date_default_timezone_set('America/Santiago');
-                    $fecha_hora_actual = date('Y-m-d H:i:s');
+                    $fecha_hora_actual = date('d-m-Y H:i:s');
                     require 'conexion.php';
                     $sql="SELECT *FROM paciente WHERE Rut=$rut";
                     $result=$conn->query($sql);
