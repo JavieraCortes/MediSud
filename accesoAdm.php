@@ -50,9 +50,8 @@
                     header('Location: index.php');
                     }
                     ?>
-                    <h3>Ingresar Usuario</h3>
-                    <img src="img/security.png" width="55">
-                    <hr class="bottom-line">
+                    <h3><img src="img/security.png" width="25">Ingresar Usuario</h3>
+                    <br>
                 </div>
                 <div class="feature-info">
                 

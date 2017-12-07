@@ -57,9 +57,7 @@
                     header('Location: index.php');
                     }
                     ?>
-                    
-                    <img src="img/pac.png" width="55">
-                    <hr class="bottom-line">
+
                 </div>
                 <div class="feature-info">
                 

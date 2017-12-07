@@ -43,16 +43,25 @@
         <div class="container">
              <?php
                     session_start();
-                    echo '<br><p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>';
+                    
                     if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');
                     }
+                    $rut=$_GET['run'];
+                    echo '<br><div class="row">
+                    <div class="col-md-1">
+                        <a href="controles.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
+                    </div>        
+                    <div class="col-md-11">
+                        <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
+                    </div>
+                </div>';  
+                    
                     ?>
             <div class="row">
                 <div class="header-section text-center">
                     <?php
-                        $rut=$_GET['run'];
                         $codUrg=$_GET['codUrgencia'];
                         require 'conexion.php';
                         $sql="SELECT *FROM urgencia WHERE run=$rut and codUrgencia=$codUrg";

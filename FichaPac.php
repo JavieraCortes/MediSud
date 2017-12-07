@@ -58,7 +58,7 @@
                     <div class="col-md-11">
                         <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
                     </div>
-                </div><br><br>';
+                </div>';
 
                 if(isset($_POST['salir'])){
                     session_destroy();
@@ -72,6 +72,50 @@
                 $usu = $_SESSION['user'];
             
                 require 'conexion.php';
+                
+                $sql1="SELECT *FROM enfermedad WHERE Rut=".$usu;
+                
+                $result1=$conn->query($sql1);
+
+                if($result1->num_rows>0){
+                    
+                    echo '<div class="row">
+                                <div class="header-section text-center">
+                                    <h4><img src="img/urgencia.png" width="22">Enfermedades Cronicas Asociadas</h4><br>
+
+                                </div>
+                                <div class="feature-info">
+                                
+                                <table class="pacientes">
+                                <thead>
+                                <tr>
+                                <th>Nombre Enfermedad</th>
+                                <th>Medicamento</th>
+                                <th>Dosis</th>     
+                                <th>Periodo(hr)</th>
+                                </tr>
+                                </thead>
+                                <tbody>';
+                    
+                    while($row = $result1->fetch_assoc()){
+                        
+                        echo'<tr>
+                                <td>'. $row['NomEnfermedad'] . '</td> 
+                                <td>'. $row['NomMedicamento'].'</td>                          
+                                <td>'.$row['DosisMg'].'</td>
+                                <td>'. $row['PeriodoHr'] . '</td> 
+                               
+                            </tr>';
+                    }
+                            
+                    echo '</tbody></table>'
+                        . '</div>
+                        </div>';
+                }else{
+                    echo '<div style="text-align:center" ><h2>No hay Enfermedades Crónicas Asociadas.</h2></div>';
+                }
+                
+                echo '<br>';
                 $sql="SELECT * FROM paciente WHERE Rut=$usu";
                 $result=$conn->query($sql);
 
@@ -153,8 +197,6 @@
                                             </div>
                                         </form>
 
-
-
                                       </div>
                                     </div>
                                   </div>
@@ -206,9 +248,7 @@
                     $conn->close();
                     echo "<script language='javascript'>window.location='FichaPac.php'</script>";
                 }
-                
-                
-                
+      
             ?>
             </div>
               

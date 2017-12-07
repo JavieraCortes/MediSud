@@ -67,7 +67,6 @@
         <div class="row">
           <div class="header-section text-center">
             <h2>Pacientes</h2>
-            <p>Registros de Pacientes MediSud </p>
             <hr class="bottom-line">
           </div>
             

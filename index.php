@@ -25,6 +25,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="pacientes.php">Lectura de Urgencia</a></li>
           <li class="btn-trial"><a href="#" data-target="#login" data-toggle="modal">INGRESAR</a></li>
         </ul>
         </div>
@@ -119,9 +120,8 @@
         <div class="container">
             <div class="row">
                 <div class="header-section text-center">
-                    <h2>¿Comó nace MediSud? </h2>
-                    <img src="img/logo2.png" width="70">
-                    <hr class="bottom-line">
+                    <h2><img src="img/logo2.png" width="35">¿Comó nace MediSud? </h2>
+                    <br>
                 </div>
                 <div class="feature-info">               
                     <div class="row">                    
@@ -135,7 +135,7 @@
                             ejemplo, una persona que sufra una crisis en la vía pública y no cuente con sus documentos o 
                             identificación. Cuando obtenga su primera atención médica, se perdería tiempo al intentar reconocerlo 
                             para evaluar el tratamiento adecuado a su salud. </p>
-                        <div align="center"><img src="img/med.jpg" width="400" ></div>
+                        <div align="center"><img src="img/med.jpg" width="350" ></div>
                         <p style="text-align:justify">Conocer la información oportunamente, es un factor provechoso a favor del 
                             diagnóstico y el actuar médico. Por lo tanto, este proyecto busca aprovechar las primeras horas que 
                             son primordiales en la atención de un paciente descompensado.</p>

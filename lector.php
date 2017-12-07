@@ -10,8 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/imagehover.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/tabla.css">
-    
-    
+       
   </head>
   <body>
     <!--Navigation bar-->

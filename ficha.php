@@ -99,9 +99,7 @@
                             $rut=$row['Rut'];
                             
                             echo '<div class="header-section text-center">
-                                    <h2>Ficha N°'. $row['Rut'].'</h2>
-                                    <img src="img/control.png" width="50">
-                                    <hr class="bottom-line">
+                                    <h2><img src="img/control.png" width="22"> Ficha N°'. $row['Rut'].'</h2>
                                 </div>
                                 <div class="feature-info">
 
@@ -119,47 +117,17 @@
                                              <a href="enfermedad.php?ficha='.$row["Rut"].'"><button type="button" class="btn btn-primary">Añadir E.Crónica</button></a>
                                       </div>
                                   </div>
-                                    <br>
-                                    <div class="row">                    
-                                      <div class="col-md-7 col-sm-7 col-xs-7 left">
-                                            <h4>Información Personal:</h4><br>
-                                            Nombre: '.$row['Nombre'].'<br>
-                                            RUT: '.$row['Rut'].' - '.$row['Dv'].'<br>
-                                            Tag RFID Asociado: '.$row['CodRFID'].'<br>
-                                            Fecha Nacimiento: '.$row['FechaNac'].'<br>
-                                            Domicilio: '.$row['Domicilio'].', '.$row['Comuna']. ', '.$row['Localidad'].'<br>
-                                            Telefono Contacto: '.$row['Fono'].'<br>
-                                            Previsión: '.$row['Prevision'].'<br><br>
-                                      </div>
-                                      <div class="col-md-5 col-sm-5 col-xs-5 left">
-                                            <h4>Información Médica: </h4><br>
-                                            Tipo Sangre: '.$row['TipoSangre'].'  '.$row['FactorRH'].'<br>
-                                            Altura: '.$row['Altura'].'<br>
-                                            Peso: '. $row['Peso'].'<br>
-                                            IMC: '.$imc.'<br>
-                                            Alergias: '. $row['alergias'].'<br>
-                                      </div>
-                                  </div>
-
-                                    <h4>Información Familiar Contacto: </h4><br>
-                                    Nombre Familiar: '.$row['NombreFamiliar'].'<br>
-                                    Telefono Familiar: '. $row['TelefonoFamiliar'].'<br>';
-                            }
-                        }else{
-                            echo '<script>alert("La ficha no existe");</script>';
-                        }
-                        
-                $sql1="SELECT *FROM enfermedad WHERE Rut=".$rut;
+                                    <br><br>';
+                            
+                                    $sql1="SELECT *FROM enfermedad WHERE Rut=".$rut;
                 
                 $result1=$conn->query($sql1);
 
                 if($result1->num_rows>0){
                     
                     echo '<div class="row">
-                                <div class="header-section text-center">
-                                    <h4>Enfermedades Cronicas Asociadas</h4>
-                                    <img src="img/urgencia.png" width="50">
-                                    <hr class="bottom-line">
+                                <div class="header-section">
+                                    <h4>Enfermedades Cronicas Asociadas:</h4>
                                 </div>
                                 <div class="feature-info">
                                 
@@ -191,6 +159,37 @@
                 }else{
                     echo '<div style="text-align:center" ><h2>No hay Enfermedades Crónicas Asociadas.</h2></div>';
                 }
+                
+                                   echo'<br><div class="row">                    
+                                      <div class="col-md-7 col-sm-7 col-xs-7 left">
+                                            <h4>Información Personal:</h4><br>
+                                            Nombre: '.$row['Nombre'].'<br>
+                                            RUT: '.$row['Rut'].' - '.$row['Dv'].'<br>
+                                            Tag RFID Asociado: '.$row['CodRFID'].'<br>
+                                            Fecha Nacimiento: '.$row['FechaNac'].'<br>
+                                            Domicilio: '.$row['Domicilio'].', '.$row['Comuna']. ', '.$row['Localidad'].'<br>
+                                            Telefono Contacto: '.$row['Fono'].'<br>
+                                            Previsión: '.$row['Prevision'].'<br><br>
+                                      </div>
+                                      <div class="col-md-5 col-sm-5 col-xs-5 left">
+                                            <h4>Información Médica: </h4><br>
+                                            Tipo Sangre: '.$row['TipoSangre'].'  '.$row['FactorRH'].'<br>
+                                            Altura: '.$row['Altura'].'<br>
+                                            Peso: '. $row['Peso'].'<br>
+                                            IMC: '.$imc.'<br>
+                                            Alergias: '. $row['alergias'].'<br>
+                                      </div>
+                                  </div>
+
+                                    <h4>Información Familiar Contacto: </h4><br>
+                                    Nombre Familiar: '.$row['NombreFamiliar'].'<br>
+                                    Telefono Familiar: '. $row['TelefonoFamiliar'].'<br>';
+                            }
+                        }else{
+                            echo '<script>alert("La ficha no existe");</script>';
+                        }
+                        
+                
                   $conn->close();      
                     ?>
 

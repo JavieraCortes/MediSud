@@ -68,9 +68,7 @@
               
         <div class="row">
           <div class="header-section text-center">
-            <h2>Estadisticas</h2>
-            <p>Seleccine la localidad desde la lista de valores para comenzar a graficar</p>
-            
+            <h2>Estadisticas</h2>  
             <hr class="bottom-line">
           </div>
             

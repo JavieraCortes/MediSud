@@ -53,7 +53,7 @@
                     <div class="col-md-11">
                         <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
                     </div>
-                </div><br><br>';
+                </div>';
                 
                 
                 if(isset($_POST['salir'])){
@@ -75,9 +75,7 @@
                     
                     echo '<div class="row">
                                 <div class="header-section text-center">
-                                    <h2>Ficha N°'. $usu.'</h2>
-                                    <img src="img/control.png" width="50">
-                                    <hr class="bottom-line">
+                                    <h2><img src="img/control.png" width="22"> Ficha N°'. $usu.'</h2>                                   
                                 </div>
                                 <div class="feature-info">
                                 

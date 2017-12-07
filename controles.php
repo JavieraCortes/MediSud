@@ -46,6 +46,11 @@
               
                 session_start();
                 
+                if(isset($_POST['salir'])){
+                    session_destroy();
+                    header('Location: index.php');
+                }
+                
                 $rut=$_GET['rut'];
                 require 'conexion.php';
                 $s="SELECT CodRFID FROM paciente WHERE Rut=$rut";
@@ -65,10 +70,6 @@
                 
                 $conn->close();
                 
-                if(isset($_POST['salir'])){
-                    session_destroy();
-                    header('Location: index.php');
-                }
               ?>
           </div>
             <div class="row">
@@ -85,9 +86,7 @@
                     echo '<div class="row">
                                 <div class="header-section text-center">
                                     <h2>Ficha N°'. $rut.'</h2>
-                                    <h4>Controles</h4>
-                                    <img src="img/control.png" width="50">
-                                    <hr class="bottom-line">
+                                    <h4><img src="img/control.png" width="22"> Controles</h4>
                                 </div>
                                 <div class="feature-info">
                                 
@@ -128,11 +127,9 @@
 
                 if($result1->num_rows>0){
                     
-                    echo '<div class="row">
+                    echo '<br><div class="row">
                                 <div class="header-section text-center">
-                                    <h4>Urgencias Medicas</h4>
-                                    <img src="img/urgencia.png" width="50">
-                                    <hr class="bottom-line">
+                                    <h4><img src="img/urgencia.png" width="22"> Urgencias Medicas</h4>
                                 </div>
                                 <div class="feature-info">
                                 

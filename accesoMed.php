@@ -53,8 +53,6 @@
                     
                    ?>     
 
-                    <img src="img/acceso.png" width="50">
-                    <hr class="bottom-line">
                 </div>
                 <div class="feature-info">
                 
