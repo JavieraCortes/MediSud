@@ -82,7 +82,15 @@
                         <select name="Localidad">    
                             <option value="Todas" selected="selected">Todas</option>
                             <option value="Los Andes">Los Andes</option>
+                            <option value="Calle Larga">Calle Larga</option>
+                            <option value="Rinconada">Rinconada</option>
+                            <option value="San Esteban">San Esteban</option>
                             <option value="San Felipe">San Felipe</option>
+                            <option value="Llai Llay">Llai Llay</option>
+                            <option value="Putaendo">Putaendo</option>
+                            <option value="Santa Maria">Santa Maria</option>
+                            <option value="Catemu">Catemu</option>
+                            <option value="Panquehue">Panquehue</option>
                         </select>
                         <button type="submit" class="btn btn-primary" name="button" onclick="">Graficar</button>
                      </form>
@@ -114,7 +122,7 @@
                                 }else{
                                     
                                     $sql="SELECT IFNULL(COUNT(*),0) AS Cantidad FROM ENFERMEDAD EN JOIN PACIENTE PC "
-                                   . "ON EN.Rut = PC.Rut WHERE Localidad = '$local' AND NomEnfermedad = '".$enfArray[$i]."';";
+                                   . "ON EN.Rut = PC.Rut WHERE Comuna = '$local' AND NomEnfermedad = '".$enfArray[$i]."';";
                                     $tit = "Porcentaje de personas padecientes de enfermedades cronicas en la localidad de $local ";
                                 }
                                 

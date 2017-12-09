@@ -25,7 +25,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="pacientes.php">Lectura de Urgencia</a></li>
+            <li><a href="lectorIndex.php" class="btn-trial">Lectura de Urgencia</a></li>
           <li class="btn-trial"><a href="#" data-target="#login" data-toggle="modal">INGRESAR</a></li>
         </ul>
         </div>
