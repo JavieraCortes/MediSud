@@ -108,16 +108,16 @@
                         </div> 
 
                         <div class="form-group row">
-                            <label class="col-xs-3 col-form-label">Fecha Control: </label>
-                            <div class="col-xs-9">
-                                <input class="form-control" type="date" name="fecha" placeholder="Motivo por el cual el paciente Consulta" />
+                            <label class="col-xs-2 col-form-label">Fecha Control: </label>
+                            <div class="col-xs-10">
+                                <input class="form-control" type="date"  name="fecha" placeholder="Motivo por el cual el paciente Consulta" />
                             </div>
                         </div>  
                      
                         <div class="form-group row">
-                            <label class="col-xs-3 col-form-label">Fecha Control: </label>
-                            <div class="col-xs-9">
-                                <input class="form-control" type="time" name="hora" placeholder="Motivo por el cual el paciente Consulta" />
+                            <label class="col-xs-2 col-form-label">Hora Control: </label>
+                            <div class="col-xs-10">
+                                <input class="form-control" type="time"  name="hora" placeholder="Motivo por el cual el paciente Consulta" />
                             </div>
                         </div>  
 
@@ -136,22 +136,19 @@
      $rut=$_GET['agendar'];
         
         if(isset($_POST['submit'])){
-            $run = $_POST['run'];
-            $motconsulta = $_POST['motcon'];
-            $diagnostico = $_POST['diagnostico'];  
-            $complemento= $_POST['comdiag'];
-            $procedimiento= $_POST['procedimiento'];  
-            $indicacion= $_POST['indicacion'];
-            $egreso= $_POST['egreso'];  
+            $name = $row['Nombre'];
+            $rutPac = $row['Rut'];
+            $nombreMed = $_SESSION['nombre'];  
+            $fechaControl = $_POST['fecha'];
+            $horacontrol = $_POST['hora'];
             require "conexion.php";            
-            $sql= "Insert into control (Rut, motivo ,fecha, diagnostico, complemento, procedimiento, indicacion, egreso) values ('$run','$motconsulta', '$fecha_hora_actual', '$diagnostico', '$complemento', '$procedimiento', '$indicacion', '$egreso')";
+            $sql= "Insert into agendarcontrol (nombrePac, rutPac, nombreMed, fecha, hora) values ('$name','$rutPac', '$nombreMed', '$fechaControl', '$horacontrol')";
             $result = $conn->query($sql);
             $conn->close();
             header('Location: /MediSud/pacientes.php');
         }   
      
      ?>  
-                    
 
                 </div>
             </div>
