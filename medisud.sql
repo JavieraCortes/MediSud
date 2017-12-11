@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2017 a las 02:50:50
+-- Tiempo de generación: 11-12-2017 a las 03:28:45
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -19,6 +19,20 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `medisud`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `agendarcontrol`
+--
+
+CREATE TABLE `agendarcontrol` (
+  `nombrePac` varchar(30) NOT NULL,
+  `rutPac` int(8) NOT NULL,
+  `nombreMed` varchar(80) NOT NULL,
+  `fecha` varchar(10) NOT NULL,
+  `hora` varchar(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -91,7 +105,7 @@ CREATE TABLE `paciente` (
   `Rut` int(8) NOT NULL,
   `Dv` varchar(1) NOT NULL,
   `Nombre` varchar(80) NOT NULL,
-  `FechaNac` date NOT NULL,
+  `FechaNac` varchar(10) NOT NULL,
   `Sexo` char(1) NOT NULL,
   `Domicilio` varchar(80) NOT NULL,
   `Comuna` varchar(30) NOT NULL,
@@ -105,6 +119,10 @@ CREATE TABLE `paciente` (
   `alergias` varchar(100) NOT NULL,
   `NombreFamiliar` varchar(80) NOT NULL,
   `TelefonoFamiliar` int(9) NOT NULL,
+  `NombreFamiliar2` varchar(80) NOT NULL,
+  `TelefonoFamiliar2` int(9) NOT NULL,
+  `NombreFamiliar3` varchar(80) NOT NULL,
+  `TelefonoFamiliar3` int(9) NOT NULL,
   `CodRFID` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -112,12 +130,12 @@ CREATE TABLE `paciente` (
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`Rut`, `Dv`, `Nombre`, `FechaNac`, `Sexo`, `Domicilio`, `Comuna`, `Localidad`, `Fono`, `Prevision`, `Altura`, `Peso`, `TipoSangre`, `FactorRH`, `alergias`, `NombreFamiliar`, `TelefonoFamiliar`, `CodRFID`) VALUES
-(17819253, '1', 'Mario Andres Tapia Contreras', '1997-04-23', 'M', 'Bicentenario Jorge Llanos 188', 'Los Andes', 'Los Andes', 967091213, 'FONASA A', '1.85', '95.00', 'B', 'POSITIVO', 'Sin Alergias', 'Julia Rosa Contreras Delgado', 950998225, 'C006DC3A'),
-(18852886, '4', 'Oliver Osvaldo Consterla Araya', '1991-09-19', 'M', 'Villa Departamental block 1501 dpto 13', 'San Felipe', 'San Felipe', 987612427, 'FONASA C', '1.70', '82.00', 'AB', 'NEGATIVO', 'Amoxicilina', 'Valentino Andres Consterla Araya', 993034643, '36C69EBB'),
-(19268796, '9', 'Javiera Alejandra Cortes Celedon', '1996-09-21', 'F', 'Galicia 127 Villa Espana ', 'Rinconada', 'Los Andes', 996122709, 'FONASA C', '1.61', '82.00', 'O', 'POSITIVO', 'Sin Alergias', 'Mitzi Andrea Sanchez Pereira', 974718521, '30FCDC3A'),
-(19581730, '8', 'Diego Ignacio Ramirez Machuca', '1994-07-10', 'M', 'San Franciso s/n Curimon', 'San Felipe', 'San Felipe', 989606805, 'FONASA C', '1.65', '61.00', 'O', 'POSITIVO', 'Sulfamidas', 'Jose Miguel Ramirez Nehemias ', 957454581, '20B2CF3A'),
-(19581853, '3', 'Mitzi Andrea Sanchez Pereira', '1997-03-17', 'F', 'Los Claveles 108 Villa El Castillo ', 'Calle Larga', 'Los Andes', 974718521, 'FONASA C', '1.55', '72.00', 'O', 'POSITIVO', 'Sin Alergias', 'Fanny Andrea Pereira Contreras', 997419778, '0CFA4949');
+INSERT INTO `paciente` (`Rut`, `Dv`, `Nombre`, `FechaNac`, `Sexo`, `Domicilio`, `Comuna`, `Localidad`, `Fono`, `Prevision`, `Altura`, `Peso`, `TipoSangre`, `FactorRH`, `alergias`, `NombreFamiliar`, `TelefonoFamiliar`, `NombreFamiliar2`, `TelefonoFamiliar2`, `NombreFamiliar3`, `TelefonoFamiliar3`, `CodRFID`) VALUES
+(17819253, '1', 'Mario Andres Tapia Contreras', '19-09-1991', 'M', 'Bicentenario Jorge Llanos 188', 'Los Andes', 'Los Andes', 967091213, 'FONASA A', '1.85', '95.00', 'B', 'POSITIVO', 'Sin Alergias', 'Julia Rosa Contreras Delgado', 950998225, '', 0, '', 0, 'C06DC3A'),
+(18852886, '4', 'Oliver Osvaldo Consterla Araya', '10-07-1994', 'M', 'Villa Departamental block 1501 dpto 13', 'San Felipe', 'San Felipe', 987612427, 'FONASA C', '1.70', '82.00', 'AB', 'NEGATIVO', 'Amoxicilina', 'Valentino Andres Consterla Araya', 993034643, '', 0, '', 0, '36C69EBB'),
+(19268796, '9', 'Javiera Alejandra Cortes Celedon', '21-09-1996', 'F', 'Galicia 127 Villa Espana ', 'Rinconada', 'Los Andes', 996122709, 'FONASA C', '1.61', '82.00', 'O', 'POSITIVO', 'Sin Alergias', 'Mitzi Andrea Sanchez Pereira', 974718521, 'Pamela Alejandra Celedon Saavedra', 971064753, 'Mauricio Eufemio Cortes Ahumada', 976162225, '30FCDC3A'),
+(19581730, '8', 'Diego Ignacio Ramirez Machuca', '17-03-1997', 'M', 'San Franciso s/n Curimon', 'San Felipe', 'San Felipe', 989606805, 'FONASA C', '1.65', '61.00', 'O', 'POSITIVO', 'Sulfamidas', 'Jose Miguel Ramirez Nehemias ', 957454581, '', 0, '', 0, '20B2CF3A'),
+(19581853, '3', 'Mitzi Andrea Sanchez Pereira', '23-04-1997', 'F', 'Los Claveles 108 Villa El Castillo ', 'Calle Larga', 'Los Andes', 974718521, 'FONASA C', '1.55', '72.00', 'O', 'POSITIVO', 'Sin Alergias', 'Fanny Andrea Pereira Contreras', 997419778, '', 0, '', 0, 'CFA4949');
 
 -- --------------------------------------------------------
 
@@ -174,14 +192,22 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`usuario`, `pass`, `nombre`, `tipoUsuario`) VALUES
 (12578795, 'd67326a22642a324aa1b0745f2f17abb', 'Jorge Mauricio Sanchez Liberon', 'Doctor'),
+(12718687, '669ffc150d1f875819183addfc842cab', 'Pamela Alejandra Celedon Saavedra', 'Admin'),
 (17819253, 'de2f15d014d40b93578d255e6221fd60', 'Mario Andres Tapia Contreras', 'Paciente'),
 (18852886, 'acae273a5a5c88b46b36d65a25f5f435', 'Oliver Osvaldo Consterla Araya', 'Paciente'),
 (19268796, 'f1ceaa098b571dba1218c315bd1cca6c', 'Javiera Alenjandra Cortes Celedon', 'Paciente'),
-(19581853, 'b34b236ac474c2ba18fc5922e36e0e34', 'Mitzi Andrea Sanchez Pereira', 'Admin');
+(19581730, '078c007bd92ddec308ae2f5115c1775d', 'Diego Ignacio Ramirez Machuca', 'Paciente'),
+(19581853, 'b34b236ac474c2ba18fc5922e36e0e34', 'Mitzi Andrea Sanchez Pereira', 'Paciente');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `agendarcontrol`
+--
+ALTER TABLE `agendarcontrol`
+  ADD PRIMARY KEY (`fecha`,`hora`);
 
 --
 -- Indices de la tabla `control`
@@ -223,12 +249,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `control`
 --
 ALTER TABLE `control`
-  MODIFY `Registro` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Registro` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `urgencia`
 --
 ALTER TABLE `urgencia`
-  MODIFY `codUrgencia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `codUrgencia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Restricciones para tablas volcadas
 --
