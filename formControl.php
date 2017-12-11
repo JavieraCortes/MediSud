@@ -77,16 +77,13 @@
                     $result=$conn->query($sql);
                     if($result->num_rows>0){
                         while($row=$result->fetch_assoc()){
-                            echo'
-                                
-            <p>Registrando Control Medico para el paciente: '.$row['Nombre']. ' Rut: '.$row['Rut'].' </p>
-            <p>Control Registrado en la Fecha: '.$fecha_hora_actual.'</p>
-            <hr class="bottom-line">
-          </div>
-          <div id="sendmessage">Control Registrado</div>
-          <div id="errormessage"></div>
-          <div class="container">
-            <div class="row">
+                            echo'                              
+                            <p>Registrando Control Medico para el paciente: '.$row['Nombre']. ' Rut: '.$row['Rut'].' </p>
+                            <p>Control Registrado en la Fecha: '.$fecha_hora_actual.'</p>
+                            <hr class="bottom-line">
+                          </div>
+                          <div class="container">
+                          <div class="row">
                 <div class="col-lg-10">
                     
                     <form id="form" method="post" class="form-horizontal mitad" action="formControl.php">

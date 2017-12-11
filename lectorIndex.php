@@ -28,16 +28,12 @@
       </div>
     </nav>
     <!--/ Navigation bar-->
-    
-    <br>
+
     <section id ="contact" class="section-padding">
       <div class="container">
         <a href="index.php"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
     </div>     
     </section>
-    
-    
-    
     
           <div class="header-section text-center">
             <h2>Lector RFID</h2>

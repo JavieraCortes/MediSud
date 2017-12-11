@@ -117,6 +117,9 @@
                                              <a href="enfermedad.php?ficha='.$row["Rut"].'"><button type="button" class="btn btn-primary">Añadir E.Crónica</button></a>
                                       </div>
                                   </div>
+                                  <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
+                                             <a href="agendarControl.php?agendar='.$row["Rut"].'"><button type="button" class="btn btn-primary">hora</button></a>
+                                  </div>
                                     <br><br>';
                             
                                     $sql1="SELECT *FROM enfermedad WHERE Rut=".$rut;
@@ -181,9 +184,13 @@
                                       </div>
                                   </div>
 
-                                    <h4>Información Familiar Contacto: </h4><br>
-                                    Nombre Familiar: '.$row['NombreFamiliar'].'<br>
-                                    Telefono Familiar: '. $row['TelefonoFamiliar'].'<br>';
+                                    <h4>Información Familiares Contacto: </h4><br>
+                                    Nombre Familiar 1: '.$row['NombreFamiliar'].'<br>
+                                    Telefono Familiar 1: '. $row['TelefonoFamiliar'].'<br>
+                                    Nombre Familiar 2: '.$row['NombreFamiliar2'].'<br>
+                                    Telefono Familiar 2: '. $row['TelefonoFamiliar2'].'<br>
+                                    Nombre Familiar 3: '.$row['NombreFamiliar3'].'<br>
+                                    Telefono Familiar 3: '. $row['TelefonoFamiliar3'].'<br>';
                             }
                         }else{
                             echo '<script>alert("La ficha no existe");</script>';

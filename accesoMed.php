@@ -27,6 +27,7 @@
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
           <li><a href="formPac.php">Ingresar Paciente</a></li>
+          <li><a href="agendarControl.php">Agendar Control</a></li>
           <li><form action="accesoMed.php" method="post">
                   <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
           </form>

@@ -150,9 +150,13 @@
                             
                             <div class="row">
                                   <div class="col-md-7 col-sm-7 col-xs-7 left">
-                                        <h4>Información Familiar Contacto: </h4><br>
-                                        Nombre Familiar: '.$row['NombreFamiliar'].'<br>
-                                        Telefono Familiar: '. $row['TelefonoFamiliar'].'<br>
+                                        <h4>Información Familiares Contacto: </h4><br>
+                                        Nombre Familiar 1: '.$row['NombreFamiliar'].'<br>
+                                        Telefono Familiar 1: '. $row['TelefonoFamiliar'].'<br><br>
+                                        Nombre Familiar 2: '.$row['NombreFamiliar2'].'<br>
+                                        Telefono Familiar 2: '. $row['TelefonoFamiliar2'].'<br><br>
+                                        Nombre Familiar 3: '.$row['NombreFamiliar3'].'<br>
+                                        Telefono Familiar 3: '. $row['TelefonoFamiliar3'].'<br>
                                    </div>
                                    
                                    <div class="col-md-5 col-sm-5 col-xs-5 left">

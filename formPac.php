@@ -122,12 +122,8 @@
                     <input type="number" class="form-control" name="telefono" id="telefono" placeholder="Telefono Contacto" min="0" maxlength="8"/>
                     <div class="validation"></div>
                 </div>
-              </div>
-              
-              
-              <div class="col-md-6 col-sm-6 col-xs-12 right">
                 <div class="form-group">
-                    Tipo Sangre:
+                    Tipo Prevision:
                       <div class="row">                    
                       <div class="col-md-3 col-sm-3 col-xs-3 left">
                           <select name="prevision">
@@ -153,6 +149,10 @@
                     <input type="number" class="form-control" name="peso" id="peso" min="0" placeholder="Peso Paciente (kg)" />
                     <div class="validation"></div>
                 </div>
+              </div>
+              
+              
+              <div class="col-md-6 col-sm-6 col-xs-12 right">
                 <div class="form-group">
                     Tipo Sangre:
                       <div class="row">                    
@@ -185,13 +185,33 @@
                         </div>    
                 <div class="form-group">
                     <br>Datos Familiar Contacto:<br><br>
-                    Nombre Familiar:
+                    Nombre Familiar 1:
                     <input type="text" name="nombrefam" class="form-control form" id="nombrefam" placeholder="Nombre Familiar Contacto" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                     <div class="validation"></div>
                 </div>
                 <div class="form-group">
-                    Telefono Familiar:
+                    Telefono Familiar 1:
                     <input type="number" class="form-control" name="fonofam" id="fonofam" placeholder="Telefono Contacto Familiar" min="0" maxlength="8"/>
+                    <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                    Nombre Familiar 2:
+                    <input type="text" name="nombrefam2" class="form-control form" id="nombrefam" placeholder="Nombre Familiar Contacto" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                    Telefono Familiar 2:
+                    <input type="number" class="form-control" name="fonofam2" id="fonofam" placeholder="Telefono Contacto Familiar" min="0" maxlength="8"/>
+                    <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                    Nombre Familiar 3:
+                    <input type="text" name="nombrefam3" class="form-control form" id="nombrefam" placeholder="Nombre Familiar Contacto" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                </div>
+                <div class="form-group">
+                    Telefono Familiar 3:
+                    <input type="number" class="form-control" name="fonofam3" id="fonofam" placeholder="Telefono Contacto Familiar" min="0" maxlength="8"/>
                     <div class="validation"></div>
                 </div>
               </div>
@@ -221,9 +241,13 @@
                     $alergia = $_POST['alergia'];
                     $nomfam= $_POST['nombrefam'];
                     $fonofam= $_POST['fonofam'];
+                    $nomfami= $_POST['nombrefam2'];
+                    $fonofami= $_POST['fonofam2'];
+                    $nomfamil= $_POST['nombrefam3'];
+                    $fonofamil= $_POST['fonofam3'];
 
                     require "conexion.php";            
-                    $sql= "Insert into paciente (Rut, Dv, Nombre, FechaNac, Sexo, Domicilio, Comuna, Localidad, Fono, Prevision, Altura, Peso, TipoSangre, FactorRH, alergias, NombreFamiliar, TelefonoFamiliar, CodRFID) values ('$rut','$dv', '$nombre', '$fechanac', '$genero', '$domicilio', '$comuna', '$localidad', '$fono', '$prevision', '$altura', '$peso', '$tiposangre', '$factorrh', '$alergia', '$nomfam', '$fonofam', '$cod')";
+                    $sql= "Insert into paciente (Rut, Dv, Nombre, FechaNac, Sexo, Domicilio, Comuna, Localidad, Fono, Prevision, Altura, Peso, TipoSangre, FactorRH, alergias, NombreFamiliar, TelefonoFamiliar, NombreFamiliar2, TelefonoFamiliar2, NombreFamiliar3, TelefonoFamiliar3, CodRFID) values ('$rut','$dv', '$nombre', '$fechanac', '$genero', '$domicilio', '$comuna', '$localidad', '$fono', '$prevision', '$altura', '$peso', '$tiposangre', '$factorrh', '$alergia', '$nomfam', '$fonofam', '$nomfami', '$fonofami', '$nomfamil', '$fonofamil', '$cod')";
                     $result = $conn->query($sql);
                     
                     if($conn->affected_rows==0){                

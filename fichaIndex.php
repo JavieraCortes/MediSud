@@ -67,41 +67,30 @@
                                     <h2><img src="img/control.png" width="22"> Ficha N°'. $row['Rut'].'</h2>
                                 </div>
                                 <div class="feature-info">
-
                                     
                                     <br><br>';
-                            
-                                    
-                    
+
                                    echo'<br><div class="row">                    
                                       <div class="col-md-7 col-sm-7 col-xs-7 left">
                                             <h4>Información Personal:</h4><br>
                                             Nombre: '.$row['Nombre'].'<br>
                                             RUT: '.$row['Rut'].' - '.$row['Dv'].'<br>
                                             Tag RFID Asociado: '.$row['CodRFID'].'<br>
-                                            Fecha Nacimiento: '.$row['FechaNac'].'<br>
                                             Domicilio: '.$row['Domicilio'].', '.$row['Comuna']. ', '.$row['Localidad'].'<br>
-                                            Telefono Contacto: '.$row['Fono'].'<br>
-                                            Previsión: '.$row['Prevision'].'<br><br>
-                                      </div>
-                                      <div class="col-md-5 col-sm-5 col-xs-5 left">
-                                            <h4>Información Médica: </h4><br>
-                                            Tipo Sangre: '.$row['TipoSangre'].'  '.$row['FactorRH'].'<br>
-                                            Altura: '.$row['Altura'].'<br>
-                                            Peso: '. $row['Peso'].'<br>
-                                            IMC: '.$imc.'<br>
-                                            Alergias: '. $row['alergias'].'<br>
                                       </div>
                                   </div>
 
                                     <h4>Información Familiar Contacto: </h4><br>
-                                    Nombre Familiar: '.$row['NombreFamiliar'].'<br>
-                                    Telefono Familiar: '. $row['TelefonoFamiliar'].'<br>';
+                                        Nombre Familiar 1: '.$row['NombreFamiliar'].'<br>
+                                        Telefono Familiar 1: '. $row['TelefonoFamiliar'].'<br><br>
+                                        Nombre Familiar 2: '.$row['NombreFamiliar2'].'<br>
+                                        Telefono Familiar 2: '. $row['TelefonoFamiliar2'].'<br><br>
+                                        Nombre Familiar 3: '.$row['NombreFamiliar3'].'<br>
+                                        Telefono Familiar 3: '. $row['TelefonoFamiliar3'].'<br>';
                             }
                         }else{
                             echo '<div style="text-align:center" ><h2>La ficha no existe.</h2></div>';
                         }
-                        
                 
                   $conn->close();      
                     ?>
