@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-12-2017 a las 03:28:45
+-- Tiempo de generación: 15-12-2017 a las 00:43:26
 -- Versión del servidor: 10.1.19-MariaDB
 -- Versión de PHP: 5.6.28
 
@@ -27,12 +27,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `agendarcontrol` (
-  `nombrePac` varchar(30) NOT NULL,
+  `nombrePac` varchar(80) NOT NULL,
   `rutPac` int(8) NOT NULL,
   `nombreMed` varchar(80) NOT NULL,
   `fecha` varchar(10) NOT NULL,
   `hora` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `agendarcontrol`
+--
+
+INSERT INTO `agendarcontrol` (`nombrePac`, `rutPac`, `nombreMed`, `fecha`, `hora`) VALUES
+('Mario Andres Tapia Contreras', 17819253, 'Jorge Mauricio Sanchez Liberon', '18-12-2017', '08:30'),
+('Javiera Alejandra Cortes Celedon', 19268796, 'Jorge Mauricio Sanchez Liberon', '18-12-2017', '12:00'),
+('Javiera Alejandra Cortes Celedon', 19268796, 'Jorge Mauricio Sanchez Liberon', '19-12-2017', '08:00'),
+('Mario Andres Tapia Contreras', 17819253, 'Jorge Mauricio Sanchez Liberon', '21-01-2018', '13:30');
 
 -- --------------------------------------------------------
 
@@ -110,6 +120,7 @@ CREATE TABLE `paciente` (
   `Domicilio` varchar(80) NOT NULL,
   `Comuna` varchar(30) NOT NULL,
   `Localidad` varchar(20) NOT NULL,
+  `correo` varchar(60) NOT NULL,
   `Fono` int(9) NOT NULL,
   `Prevision` varchar(15) NOT NULL,
   `Altura` decimal(3,2) NOT NULL,
@@ -130,12 +141,12 @@ CREATE TABLE `paciente` (
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`Rut`, `Dv`, `Nombre`, `FechaNac`, `Sexo`, `Domicilio`, `Comuna`, `Localidad`, `Fono`, `Prevision`, `Altura`, `Peso`, `TipoSangre`, `FactorRH`, `alergias`, `NombreFamiliar`, `TelefonoFamiliar`, `NombreFamiliar2`, `TelefonoFamiliar2`, `NombreFamiliar3`, `TelefonoFamiliar3`, `CodRFID`) VALUES
-(17819253, '1', 'Mario Andres Tapia Contreras', '19-09-1991', 'M', 'Bicentenario Jorge Llanos 188', 'Los Andes', 'Los Andes', 967091213, 'FONASA A', '1.85', '95.00', 'B', 'POSITIVO', 'Sin Alergias', 'Julia Rosa Contreras Delgado', 950998225, '', 0, '', 0, 'C06DC3A'),
-(18852886, '4', 'Oliver Osvaldo Consterla Araya', '10-07-1994', 'M', 'Villa Departamental block 1501 dpto 13', 'San Felipe', 'San Felipe', 987612427, 'FONASA C', '1.70', '82.00', 'AB', 'NEGATIVO', 'Amoxicilina', 'Valentino Andres Consterla Araya', 993034643, '', 0, '', 0, '36C69EBB'),
-(19268796, '9', 'Javiera Alejandra Cortes Celedon', '21-09-1996', 'F', 'Galicia 127 Villa Espana ', 'Rinconada', 'Los Andes', 996122709, 'FONASA C', '1.61', '82.00', 'O', 'POSITIVO', 'Sin Alergias', 'Mitzi Andrea Sanchez Pereira', 974718521, 'Pamela Alejandra Celedon Saavedra', 971064753, 'Mauricio Eufemio Cortes Ahumada', 976162225, '30FCDC3A'),
-(19581730, '8', 'Diego Ignacio Ramirez Machuca', '17-03-1997', 'M', 'San Franciso s/n Curimon', 'San Felipe', 'San Felipe', 989606805, 'FONASA C', '1.65', '61.00', 'O', 'POSITIVO', 'Sulfamidas', 'Jose Miguel Ramirez Nehemias ', 957454581, '', 0, '', 0, '20B2CF3A'),
-(19581853, '3', 'Mitzi Andrea Sanchez Pereira', '23-04-1997', 'F', 'Los Claveles 108 Villa El Castillo ', 'Calle Larga', 'Los Andes', 974718521, 'FONASA C', '1.55', '72.00', 'O', 'POSITIVO', 'Sin Alergias', 'Fanny Andrea Pereira Contreras', 997419778, '', 0, '', 0, 'CFA4949');
+INSERT INTO `paciente` (`Rut`, `Dv`, `Nombre`, `FechaNac`, `Sexo`, `Domicilio`, `Comuna`, `Localidad`, `correo`, `Fono`, `Prevision`, `Altura`, `Peso`, `TipoSangre`, `FactorRH`, `alergias`, `NombreFamiliar`, `TelefonoFamiliar`, `NombreFamiliar2`, `TelefonoFamiliar2`, `NombreFamiliar3`, `TelefonoFamiliar3`, `CodRFID`) VALUES
+(17819253, '1', 'Mario Andres Tapia Contreras', '19-09-1991', 'M', 'Bicentenario Jorge Llanos 188', 'Los Andes', 'Los Andes', 'mtac.poker@gmail.com', 967091213, 'FONASA A', '1.85', '95.00', 'B', 'POSITIVO', 'Sin Alergias', 'Julia Rosa Contreras Delgado', 950998225, 'Diego Ignacio Ramirez Machuca', 989606805, 'Oliver Osvaldo Consterla Araya', 987612427, 'C06DC3A'),
+(18852886, '4', 'Oliver Osvaldo Consterla Araya', '10-07-1994', 'M', 'Villa Departamental block 1501 dpto 13', 'San Felipe', 'San Felipe', 'oliver.consterla@alumnos.upla.cl', 987612427, 'FONASA C', '1.70', '82.00', 'AB', 'NEGATIVO', 'Amoxicilina', 'Valentino Andres Consterla Araya', 993034643, 'Diego Ignacio Ramirez Machuca', 989606805, 'Mitzi Andrea Sanchez Pereira', 974718521, '36C69EBB'),
+(19268796, '9', 'Javiera Alejandra Cortes Celedon', '21-09-1996', 'F', 'Galicia 127 Villa Espana ', 'Rinconada', 'Los Andes', 'javieracortesceledon@gmail.com', 996122709, 'FONASA C', '1.61', '82.00', 'O', 'POSITIVO', 'Sin Alergias', 'Mitzi Andrea Sanchez Pereira', 974718521, 'Pamela Alejandra Celedon Saavedra', 971064753, 'Mauricio Eufemio Cortes Ahumada', 976162225, '30FCDC3A'),
+(19581730, '8', 'Diego Ignacio Ramirez Machuca', '17-03-1997', 'M', 'San Franciso s/n Curimon', 'San Felipe', 'San Felipe', 'diego.ramirez.17@gmail.com', 989606805, 'FONASA C', '1.65', '61.00', 'O', 'POSITIVO', 'Sulfamidas', 'Jose Miguel Ramirez Nehemias ', 957454581, 'Oliver Osvaldo Consterla Araya', 987612427, 'Javiera Alejandra Cortes Celedon', 996122709, '20B2CF3A'),
+(19581853, '3', 'Mitzi Andrea Sanchez Pereira', '23-04-1997', 'F', 'Los Claveles 108 Villa El Castillo ', 'Calle Larga', 'Los Andes', 'mixi__x@hotmail.com', 974718521, 'FONASA C', '1.55', '72.00', 'O', 'POSITIVO', 'Sin Alergias', 'Fanny Andrea Pereira Contreras', 997419778, 'Jorge Mauricio Sanchez Liberon ', 984642298, 'Joanna Marcela Silva Contreras', 991311729, 'CFA4949');
 
 -- --------------------------------------------------------
 
@@ -171,7 +182,9 @@ INSERT INTO `urgencia` (`codUrgencia`, `run`, `fecha`, `direccion`, `latitud`, `
 (6, 19581730, '22-11-2017 18:33:09', 'Arturo Prat 255-643 San Felipe RegiÃ³n de ValparaÃ­so', '-32.7496551', '-70.7268584', '39.5', 90, 17, '119/79', 80, 'Uso de oxigeno. Medicamento Paracetamol.'),
 (7, 17819253, '26-11-2017 23:45:49', 'Tres Carrera 430, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8309535', '-70.598115', '37.0', 70, 20, '140/90', 98, 'Buscar signos de descompensacion cardiaca.\r\nSe comparan presiones y pulsos en MIs y MSs.'),
 (8, 19581730, '27-11-2017 20:35:30', 'Navarro 157-211 San Felipe RegiÃ³n de ValparaÃ­so', '-32.7482225', '-70.7277836', '37.0', 70, 18, '119/79', 79, 'Uso de Oxigeno e hidrocorticoides.'),
-(9, 17819253, '27-11-2017 00:08:57', 'Gral Freire 99-1, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8372173', '-70.5961565', '39.5', 70, 16, '119/79', 97, 'Medicamento usado Tylenol');
+(9, 17819253, '27-11-2017 00:08:57', 'Gral Freire 99-1, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8372173', '-70.5961565', '39.5', 70, 16, '119/79', 97, 'Medicamento usado Tylenol'),
+(11, 17819253, '14-12-2017 19:38:47', 'Esmeralda 500-598, Los Andes, RegiÃ³n de ValparaÃ­so', '-32.8326204', '-70.5997888', '40.0', 90, 16, '119/79', 90, 'Aplicacion de compresas frias'),
+(12, 17819253, '14-09-2017 19:42:51', 'Chorrillos 433-457 San Felipe RegiÃ³n de ValparaÃ­so', '-32.7498116', '-70.731135', '39.5', 90, 16, '119/79', 90, 'Aplicacion de compresas frias');
 
 -- --------------------------------------------------------
 
@@ -254,7 +267,7 @@ ALTER TABLE `control`
 -- AUTO_INCREMENT de la tabla `urgencia`
 --
 ALTER TABLE `urgencia`
-  MODIFY `codUrgencia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `codUrgencia` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Restricciones para tablas volcadas
 --
