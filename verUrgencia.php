@@ -77,7 +77,7 @@
                 </div>
                 
                 <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     
                         <div class="form-group row">
                             <label class="col-xs-3 col-form-label">Dirección Urgencia: </label>

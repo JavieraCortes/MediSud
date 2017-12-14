@@ -36,7 +36,8 @@
                     <li><a href="formPac.php">Ingresar Paciente</a></li> ';
             }else{
                 echo '<li><a href="FichaPac.php">Mi Ficha</a></li>
-                     <li><a href="ControlesPac.php">Controles</a></li>
+                     <li><a href="ControlesPac.php">Controles Realizados</a></li>
+                     <li><a href="ProxControlesPac.php">Proximos Controles</a></li>
                      <li><a href="EstadisticasPac.php">Estadisticas</a></li>';
             }
                               
@@ -63,7 +64,7 @@
                     $rut=$_GET['rut'];
                     echo '<br><div class="row">
                     <div class="col-md-1">
-                        <a href="controles.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
+                        <a href="controlesPac.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
                     </div>        
                     <div class="col-md-11">
                         <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
@@ -90,7 +91,7 @@
                 </div>
                 
                 <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     
                         <div class="form-group row">
                             <label class="col-xs-3 col-form-label">Motivo Consulta: </label>

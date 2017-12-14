@@ -85,7 +85,7 @@
                           </div>
                           <div class="container">
                           <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     
                     <form id="form" method="post" class="form-horizontal mitad" action="formControl.php">
                     
@@ -144,21 +144,21 @@
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Complemento Diagnostico: </label>
                             <div class="col-xs-10">
-                                <textarea style="overflow: hidden" name="comdiag" rows="2" cols="97%" placeholder="Diagnostico Complementario"></textarea>
+                                <input class="form-control" type="text"  name="comdiag" placeholder="Diagnostico Complementario" />
                             </div>
                         </div>
                             
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Procedimiento Diagnostico: </label>
                             <div class="col-xs-10">
-                                <textarea style="overflow: hidden" name="procedimiento" rows="2" cols="97%" placeholder="Procedimiento Aplicado"></textarea>
+                                <input class="form-control" type="text"  name="procedimiento" placeholder="Procedimiento Aplicado" />
                             </div>
                         </div>
                             
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Indicaciones Medicas: </label>
                             <div class="col-xs-10">
-                                <textarea style="overflow: hidden" name="indicacion" rows="2" cols="97%" placeholder="Indicaciones Medicas a Seguir"></textarea>
+                                <input class="form-control" type="text"  name="indicacion" placeholder="Indicaciones Medicas a Seguir" />
                             </div>
                         </div>
                               

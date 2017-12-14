@@ -72,7 +72,7 @@
           </div>
             
             <div class="row">
-              <div class="col-lg-10">    
+              <div class="col-lg-12">    
                     <form id="form1" name="form1" method="get" class="form-horizontal mitad" action="ficha.php">
                         
                         <div class="form-group row" style="margin-right: 0">
@@ -96,7 +96,7 @@
 
           <div class="container">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     
                     
                     <?php

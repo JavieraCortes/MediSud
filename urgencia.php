@@ -90,7 +90,7 @@
           </div>
           <div class="container">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <form id="form" method="post" class="form-horizontal mitad" action="buscar.php">
                     
                         <input type="hidden" value="'.$row['Rut'].'" name="pac">
@@ -156,7 +156,7 @@
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Procedimiento Realizado: </label>
                             <div class="col-xs-10">
-                                <textarea style="overflow: hidden" name="accion" rows="2" cols="96%" placeholder="Procedimiento Médico Realizado"></textarea>
+                                <input class="form-control" type="text"  name="accion" placeholder="Procedimiento Médico Realizado" />
                             </div>
                         </div>
 

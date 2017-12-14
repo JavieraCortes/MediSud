@@ -30,7 +30,8 @@
         <ul class="nav navbar-nav navbar-right">
             
             <li><a href="FichaPac.php">Mi Ficha</a></li>
-            <li><a href="ControlesPac.php">Controles</a></li>
+            <li><a href="ControlesPac.php">Controles Realizados</a></li>
+            <li><a href="ProxControlesPac.php">Proximos Controles</a></li>
             <li><a href="EstadisticasPac.php">Estadisticas</a></li>
             
                 
@@ -107,9 +108,14 @@
                                     function drawChart() {
                                       var data = google.visualization.arrayToDataTable([
                                         ['Mes', 'Cantidad', { role: 'style' } ],";
-                                        
+                                
+                                $m = $m-1;
                                 for($i=0; $i<12 ; $i++){
-                                    echo "['$meses[$i]',$valMeses[$i],'#084B8A'],";
+                                    echo "['$meses[$m]',$valMeses[$m],'#084B8A'],";
+                                    if($m == 11){
+                                        $m = 0;
+                                    }
+                                    $m++;
                                 }
                                         
 

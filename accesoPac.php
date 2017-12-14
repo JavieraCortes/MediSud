@@ -29,7 +29,8 @@
             session_start();
             
             echo '<li><a href="FichaPac.php">Mi Ficha</a></li>
-                  <li><a href="ControlesPac.php">Controles</a></li>
+                  <li><a href="ControlesPac.php">Controles Realizados</a></li>
+                  <li><a href="ProxControlesPac.php">Proximos Controles</a></li>
                   <li><a href="EstadisticasPac.php">Estadisticas</a></li>';
             
             ?>
