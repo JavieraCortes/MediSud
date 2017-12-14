@@ -24,10 +24,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="formPac.php">Ingresar Paciente</a></li>
           <li><a href="pacientes.php">Pacientes</a></li>
+          <li><a href="ProxControles.php">Proximos Controles</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="mapa.php">Geolocalización</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li> 
+          <li><a href="mapa.php">Geolocalización</a></li> 
           <li><form action="urgencia.php" method="post">
                   <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
           </form>
@@ -156,7 +157,7 @@
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Procedimiento Realizado: </label>
                             <div class="col-xs-10">
-                                <input class="form-control" type="text"  name="accion" placeholder="Procedimiento Médico Realizado" />
+                            <input class="form-control" type="text"  name="accion" placeholder="Procedimiento Médico Realizado" />
                             </div>
                         </div>
 

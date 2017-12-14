@@ -37,10 +37,11 @@
                 
                 if($_SESSION['tipo'] == 'Doctor'){
                     
-                    echo '<li><a href="pacientes.php">Pacientes</a></li>
+                    echo '<li><a href="formPac.php">Ingresar Paciente</a></li>
+                        <li><a href="pacientes.php">Pacientes</a></li>
+                        <li><a href="ProxControles.php">Proximos Controles</a></li>
                         <li><a href="estadisticas.php">Estadisticas</a></li>
-                        <li><a href="mapa.php">Geolocalización</a></li>
-                        <li><a href="formPac.php">Ingresar Paciente</a></li>';
+                        <li><a href="mapa.php">Geolocalización</a></li>';
                 }else{
                     echo '<li><a href="ficha.php?rut='.$_SESSION['usuario'].'">Mi Ficha</a></li>
                         <li><a href="controles.php?rut'.$_SESSION['usuario'].'">Controles</a></li> ';
@@ -134,6 +135,9 @@
                                         Nombre: '.$row['Nombre'].'<br>
                                         RUT: '.$row['Rut'].' - '.$row['Dv'].'<br>
                                         Tag RFID Asociado: '.$row['CodRFID'].'<br>
+                                        Correo: '.$row['correo'].'<br>
+                                        Telefono Contacto: '.$row['Fono'].'<br>
+                                        Domicilio: '.$row['Domicilio'].', '.$row['Comuna'].', '.$row['Localidad'].'<br>
                                         Fecha Nacimiento: '.$row['FechaNac'].'<br>
                                     </div>
                                     

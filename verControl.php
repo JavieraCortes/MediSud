@@ -30,10 +30,11 @@
             session_start();
             
             if($_SESSION['tipo'] == 'Doctor'){
-                echo '<li><a href="pacientes.php">Pacientes</a></li>
+                echo '<li><a href="formPac.php">Ingresar Paciente</a></li>
+                    <li><a href="pacientes.php">Pacientes</a></li>
+                    <li><a href="ProxControles.php">Proximos Controles</a></li>
                     <li><a href="estadisticas.php">Estadisticas</a></li>
-                    <li><a href="mapa.php">Geolocalización</a></li>
-                    <li><a href="formPac.php">Ingresar Paciente</a></li> ';
+                    <li><a href="mapa.php">Geolocalización</a></li> ';
             }else{
                 echo '<li><a href="FichaPac.php">Mi Ficha</a></li>
                      <li><a href="ControlesPac.php">Controles Realizados</a></li>
@@ -64,7 +65,7 @@
                     $rut=$_GET['rut'];
                     echo '<br><div class="row">
                     <div class="col-md-1">
-                        <a href="controlesPac.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
+                        <a href="controles.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
                     </div>        
                     <div class="col-md-11">
                         <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>

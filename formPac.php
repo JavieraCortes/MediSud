@@ -24,10 +24,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="formPac.php">Ingresar Paciente</a></li>
           <li><a href="pacientes.php">Pacientes</a></li>
+          <li><a href="ProxControles.php">Proximos Controles</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
-          <li><a href="mapa.php">Geolocalización</a></li>
-          <li><a href="formPac.php">Ingresar Paciente</a></li>   
+          <li><a href="mapa.php">Geolocalización</a></li>  
           <li><form action="formPac.php" method="post">
                   <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
           </form>
@@ -86,12 +87,17 @@
                           <input type="text" class="form-control" name="dv" id="dv" placeholder="dv" maxlength="1" />
                       </div>
                   </div>
-                  <div class="form-group">
+                  </div>
+                <div class="form-group">
+                    Correo:
+                    <input type="text" class="form-control" name="correo" id="correo" placeholder="Correo del Paciente"/>
+                    <div class="validation"></div>
+                </div>
+                <div class="form-group">
                     Tag RFID:
                     <input type="text" class="form-control" name="rfid" id="rfid" placeholder="Tag RFID asociado al Paciente"/>
                     <div class="validation"></div>
                 </div>
-                    </div>
                 <div class="form-group">
                     Fecha Nacimiento:
                     <input type="date" class="form-control" name="fechanac" id="fechanac" placeholder="Fecha Nacimiento Paciente" />
@@ -139,7 +145,11 @@
                       </div>
                     <div class="validation"></div>
                 </div>
-                </div>
+                </div>               
+              </div>
+              
+              
+              <div class="col-md-6 col-sm-6 col-xs-12 right">
                 <div class="form-group">
                     Altura:
                     <input type="float" class="form-control" name="altura" id="altura" placeholder="Altura Paciente" />
@@ -150,10 +160,6 @@
                     <input type="number" class="form-control" name="peso" id="peso" min="0" placeholder="Peso Paciente (kg)" />
                     <div class="validation"></div>
                 </div>
-              </div>
-              
-              
-              <div class="col-md-6 col-sm-6 col-xs-12 right">
                 <div class="form-group">
                     Tipo Sangre:
                       <div class="row">                    
@@ -232,7 +238,8 @@
                     $genero= $_POST['genero'];  
                     $domicilio= $_POST['domicilio'];
                     $comuna= $_POST['comuna'];
-                    $localidad= $_POST['localidad'];     
+                    $localidad= $_POST['localidad'];  
+                    $correo = $_POST['correo'];
                     $fono=$_POST['telefono'];
                     $prevision= $_POST['prevision'];
                     $altura= $_POST['altura'];
@@ -248,7 +255,7 @@
                     $fonofamil= $_POST['fonofam3'];
 
                     require "conexion.php";            
-                    $sql= "Insert into paciente (Rut, Dv, Nombre, FechaNac, Sexo, Domicilio, Comuna, Localidad, Fono, Prevision, Altura, Peso, TipoSangre, FactorRH, alergias, NombreFamiliar, TelefonoFamiliar, NombreFamiliar2, TelefonoFamiliar2, NombreFamiliar3, TelefonoFamiliar3, CodRFID) values ('$rut','$dv', '$nombre', '$fechanac', '$genero', '$domicilio', '$comuna', '$localidad', '$fono', '$prevision', '$altura', '$peso', '$tiposangre', '$factorrh', '$alergia', '$nomfam', '$fonofam', '$nomfami', '$fonofami', '$nomfamil', '$fonofamil', '$cod')";
+                    $sql= "Insert into paciente (Rut, Dv, Nombre, FechaNac, Sexo, Domicilio, Comuna, Localidad, correo, Fono, Prevision, Altura, Peso, TipoSangre, FactorRH, alergias, NombreFamiliar, TelefonoFamiliar, NombreFamiliar2, TelefonoFamiliar2, NombreFamiliar3, TelefonoFamiliar3, CodRFID) values ('$rut','$dv', '$nombre', '$fechanac', '$genero', '$domicilio', '$comuna', '$localidad', '$correo', '$fono', '$prevision', '$altura', '$peso', '$tiposangre', '$factorrh', '$alergia', '$nomfam', '$fonofam', '$nomfami', '$fonofami', '$nomfamil', '$fonofamil', '$cod')";
                     $result = $conn->query($sql);
                     
                     if($conn->affected_rows==0){                
@@ -258,8 +265,7 @@
                     }
                     
                     $conn->close();
-
-                    
+          
                 }  
 
                 ?>

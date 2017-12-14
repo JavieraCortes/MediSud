@@ -131,10 +131,11 @@
                                       <div class="col-md-7 col-sm-7 col-xs-7 left">
                                             <h4>Información Personal:</h4><br>
                                             Nombre: '.$row['Nombre'].'<br>
-                                            RUT: '.$row['Rut'].' - '.$row['Dv'].'<br>
+                                            RUT: '.$row['Rut'].' - '.$row['Dv'].'<br>                                          
                                             Tag RFID Asociado: '.$row['CodRFID'].'<br>
+                                            Correo: '.$row['correo'].'<br>
                                             Fecha Nacimiento: '.$row['FechaNac'].'<br>
-                                            Domicilio: '.$row['Domicilio'].', '.$row['Localidad'].'<br>
+                                            Domicilio: '.$row['Domicilio'].', '.$row['Comuna'].', '.$row['Localidad'].'<br>
                                             Telefono Contacto: '.$row['Fono'].'<br>
                                             Previsión: '.$row['Prevision'].'<br><br>
                                       </div>

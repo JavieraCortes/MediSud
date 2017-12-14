@@ -25,10 +25,11 @@
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
 
+        <li><a href="formPac.php">Ingresar Paciente</a></li>
         <li><a href="pacientes.php">Pacientes</a></li>
+        <li><a href="ProxControles.php">Proximos Controles</a></li>
         <li><a href="estadisticas.php">Estadisticas</a></li>
         <li><a href="mapa.php">Geolocalización</a></li>
-        <li><a href="formPac.php">Ingresar Paciente</a></li>
 
           <li><form action="verControl.php" method="post">
                   <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
@@ -77,7 +78,7 @@
                 </div>
                 
                 <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-10">
                     
                         <div class="form-group row">
                             <label class="col-xs-3 col-form-label">Dirección Urgencia: </label>

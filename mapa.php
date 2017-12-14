@@ -29,10 +29,11 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="formPac.php">Ingresar Paciente</a></li>
           <li><a href="pacientes.php">Pacientes</a></li>
+          <li><a href="ProxControles.php">Proximos Controles</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
           <li><a href="mapa.php">Geolocalización</a></li> 
-          <li><a href="formPac.php">Ingresar Paciente</a></li> 
           <li><form action="mapa.php" method="post">
                   <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
           </form>
@@ -72,6 +73,7 @@
           <div class="header-section text-center">
             <h2>Geolocalización </h2>
             <p>Ubicación de urgencias en el Valle del Aconcagua </p>
+            
             <hr class="bottom-line">
           </div>
           
@@ -126,8 +128,12 @@
             </div>
             </div>
         </div>
+        </div>
+      </div>
     </section>
     <!--/ Contact-->
+    
+
 
     <!--Footer-->
     <footer id="footer" class="footer">
