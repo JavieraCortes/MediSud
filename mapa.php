@@ -19,7 +19,7 @@ var marker;
  function init(){
         var mapOption = {
          center: new google.maps.LatLng(-32.834545, -70.603576),
-         zoom: 15,
+         zoom: 14,
          mapTypeId:google.maps.MapTypeId.ROADMAP
         };
     map = new google.maps.Map(document.getElementById("map"),mapOption);
@@ -95,11 +95,9 @@ google.maps.event.addDomListener(window, 'load', init);
                     }
            ?>
         <div class="row">
-          <div class="header-section text-center">
-            <h2>Control Paciente</h2>           
+          <div class="header-section text-center">  
+              <br>
              <div id="map" style="width:500px; height: 400px; border: solid; border-color: #00FFFF  "></div>
-    
-
             </div>
             </div>
         </div>
