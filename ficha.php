@@ -39,6 +39,7 @@
                     
                     echo '<li><a href="pacientes.php">Pacientes</a></li>
                         <li><a href="estadisticas.php">Estadisticas</a></li>
+                        <li><a href="mapa.php">Geolocalización</a></li>
                         <li><a href="formPac.php">Ingresar Paciente</a></li>';
                 }else{
                     echo '<li><a href="ficha.php?rut='.$_SESSION['usuario'].'">Mi Ficha</a></li>
@@ -87,7 +88,7 @@
                     $tag=$_GET['tag'];
                     
                     require 'conexion.php';
-                    $sql="SELECT *FROM paciente WHERE CodRFID='$tag'";
+                    $sql="SELECT * FROM paciente WHERE CodRFID='$tag'";
                     $result=$conn->query($sql);
 
                     if($result->num_rows>0){
@@ -102,79 +103,41 @@
                                     <h2><img src="img/control.png" width="22"> Ficha N°'. $row['Rut'].'</h2>
                                 </div>
                                 <div class="feature-info">
-
-                                    <div class="row">                    
-                                      <div align="center" class="col-md-3 col-sm-3 col-xs-3">
-                                             <a href="controles.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Controles y Urgencias</button></a>
-                                      </div>
-                                     <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
-                                             <a href = "formControl.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ingresar Control</button></a>
-                                      </div>
-                                      <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
-                                            <a href="urgencia.php?urgencia='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ingresar Urgencia</button></a>
-                                      </div>
-                                      <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
-                                             <a href="enfermedad.php?ficha='.$row["Rut"].'"><button type="button" class="btn btn-primary">Añadir E.Crónica</button></a>
-                                      </div>
-                                  </div>
-                                  <div align="center" class="col-md-3 col-sm-3 col-xs-3 center">
-                                             <a href="agendarControl.php?agendar='.$row["Rut"].'"><button type="button" class="btn btn-primary">hora</button></a>
-                                  </div>
+                                    
+                                    <div class="row">
+                                        <div align="center" class="col-md-1 col-sm-1 col-xs-1"></div>
+                                        <div align="center" class="col-md-2 col-sm-2 col-xs-2">
+                                               <a href="controles.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Controles y Urgencias</button></a>
+                                        </div>
+                                       <div align="center" class="col-md-2 col-sm-2 col-xs-2 center">
+                                               <a href = "formControl.php?rut='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ingresar Control</button></a>
+                                        </div>
+                                        <div align="center" class="col-md-2 col-sm-2 col-xs-2 center">
+                                              <a href="urgencia.php?urgencia='.$row["Rut"].'"><button type="button" class="btn btn-primary">Ingresar Urgencia</button></a>
+                                        </div>
+                                        <div align="center" class="col-md-2 col-sm-2 col-xs-2 center">
+                                               <a href="enfermedad.php?ficha='.$row["Rut"].'"><button type="button" class="btn btn-primary">Añadir E.Crónica</button></a>
+                                        </div>
+                                        <div align="center" class="col-md-2 col-sm-2 col-xs-2 center">
+                                                 <a href="agendarControl.php?agendar='.$row["Rut"].'"><button type="button" class="btn btn-primary">Agendar hora</button></a>
+                                        </div>
+                                        <div align="center" class="col-md-1 col-sm-1 col-xs-1"></div>
+                                    </div>
+                                    
+                                </div>
                                     <br><br>';
                             
-                                    $sql1="SELECT *FROM enfermedad WHERE Rut=".$rut;
-                
-                $result1=$conn->query($sql1);
-
-                if($result1->num_rows>0){
-                    
-                    echo '<div class="row">
-                                <div class="header-section">
-                                    <h4>Enfermedades Cronicas Asociadas:</h4>
-                                </div>
-                                <div class="feature-info">
-                                
-                                <table class="pacientes">
-                                <thead>
-                                <tr>
-                                <th>Nombre Enfermedad</th>
-                                <th>Medicamento</th>
-                                <th>Dosis</th>     
-                                <th>Periodo(hr)</th>
-                                </tr>
-                                </thead>
-                                <tbody>';
-                    
-                    while($row = $result1->fetch_assoc()){
-                        
-                        echo'<tr>
-                                <td>'. $row['NomEnfermedad'] . '</td> 
-                                <td>'. $row['NomMedicamento'].'</td>                          
-                                <td>'.$row['DosisMg'].'</td>
-                                <td>'. $row['PeriodoHr'] . '</td> 
-                               
-                            </tr>';
-                    }
                             
-                    echo '</tbody></table>'
-                        . '</div>
-                        </div>';
-                }else{
-                    echo '<div style="text-align:center" ><h2>No hay Enfermedades Crónicas Asociadas.</h2></div>';
-                }
-                
-                                   echo'<br><div class="row">                    
-                                      <div class="col-md-7 col-sm-7 col-xs-7 left">
-                                            <h4>Información Personal:</h4><br>
-                                            Nombre: '.$row['Nombre'].'<br>
-                                            RUT: '.$row['Rut'].' - '.$row['Dv'].'<br>
-                                            Tag RFID Asociado: '.$row['CodRFID'].'<br>
-                                            Fecha Nacimiento: '.$row['FechaNac'].'<br>
-                                            Domicilio: '.$row['Domicilio'].', '.$row['Comuna']. ', '.$row['Localidad'].'<br>
-                                            Telefono Contacto: '.$row['Fono'].'<br>
-                                            Previsión: '.$row['Prevision'].'<br><br>
-                                      </div>
-                                      <div class="col-md-5 col-sm-5 col-xs-5 left">
+                            echo '<br><div class="row">                    
+                                    <div class="col-md-7 col-sm-7 col-xs-7 left">
+                                        <h4>Información Personal:</h4><br>
+                                        Nombre: '.$row['Nombre'].'<br>
+                                        RUT: '.$row['Rut'].' - '.$row['Dv'].'<br>
+                                        Tag RFID Asociado: '.$row['CodRFID'].'<br>
+                                        Fecha Nacimiento: '.$row['FechaNac'].'<br>
+                                    </div>
+                                    
+                                    <div class="col-md-5 col-sm-5 col-xs-5 left">
                                             <h4>Información Médica: </h4><br>
                                             Tipo Sangre: '.$row['TipoSangre'].'  '.$row['FactorRH'].'<br>
                                             Altura: '.$row['Altura'].'<br>
@@ -182,9 +145,49 @@
                                             IMC: '.$imc.'<br>
                                             Alergias: '. $row['alergias'].'<br>
                                       </div>
-                                  </div>
+                                  </div>';
+                            
+                            $sql1="SELECT *FROM enfermedad WHERE Rut=".$rut;
+                            $result1=$conn->query($sql1);
 
-                                    <h4>Información Familiares Contacto: </h4><br>
+                            if($result1->num_rows>0){
+
+                                echo '<div class="row">
+                                        <div class="header-section">
+                                            <h4>Enfermedades Cronicas Asociadas:</h4>
+                                        </div>
+                                        <div class="feature-info">
+                                            <table class="pacientes">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nombre Enfermedad</th>
+                                                        <th>Medicamento</th>
+                                                        <th>Dosis</th>     
+                                                        <th>Periodo(hr)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>';
+
+                                while($row1 = $result1->fetch_assoc()){
+
+                                    echo'<tr>
+                                            <td>'. $row1['NomEnfermedad'] . '</td> 
+                                            <td>'. $row1['NomMedicamento'].'</td>                          
+                                            <td>'.$row1['DosisMg'].'</td>
+                                            <td>'. $row1['PeriodoHr'] . '</td> 
+                                        </tr>';
+                                }
+
+                                echo '</tbody></table></div></div>';
+                                
+                                       
+                            }else{
+                                echo '<div style="text-align:center" ><h2>No hay Enfermedades Crónicas Asociadas.</h2></div>';
+                            }
+                
+                            echo'<br>
+
+                                    <h4>Familiares Contacto: </h4><br>
                                     Nombre Familiar 1: '.$row['NombreFamiliar'].'<br>
                                     Telefono Familiar 1: '. $row['TelefonoFamiliar'].'<br>
                                     Nombre Familiar 2: '.$row['NombreFamiliar2'].'<br>
@@ -192,12 +195,12 @@
                                     Nombre Familiar 3: '.$row['NombreFamiliar3'].'<br>
                                     Telefono Familiar 3: '. $row['TelefonoFamiliar3'].'<br>';
                             }
+                            
                         }else{
                             echo '<script>alert("La ficha no existe");</script>';
                         }
                         
-                
-                  $conn->close();      
+                        $conn->close();      
                     ?>
 
             </div>

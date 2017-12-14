@@ -32,6 +32,7 @@
             if($_SESSION['tipo'] == 'Doctor'){
                 echo '<li><a href="pacientes.php">Pacientes</a></li>
                     <li><a href="estadisticas.php">Estadisticas</a></li>
+                    <li><a href="mapa.php">Geolocalización</a></li>
                     <li><a href="formPac.php">Ingresar Paciente</a></li> ';
             }else{
                 echo '<li><a href="FichaPac.php">Mi Ficha</a></li>
@@ -62,7 +63,7 @@
                     $rut=$_GET['rut'];
                     echo '<br><div class="row">
                     <div class="col-md-1">
-                        <a href="controlesPac.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
+                        <a href="controles.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
                     </div>        
                     <div class="col-md-11">
                         <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
@@ -81,10 +82,10 @@
                         if($result->num_rows>0){
                             while($row=$result->fetch_assoc()){
                         echo '
-                    <h2>Control N°'. $row['Registro'].'</h2>
+                    <h2><img src="img/control.png" width="20"> Control N°'. $row['Registro'].'</h2>
                     <p>Control Medico del paciente Rut: '.$row['Rut'].' </p>
                     <p>Control Registrado en la Fecha y Hora: '.$row['fecha'].'</p>
-                    <img src="img/control.png" width="50">
+                    
                     <hr class="bottom-line">
                 </div>
                 

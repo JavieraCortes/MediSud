@@ -27,6 +27,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="pacientes.php">Pacientes</a></li>
             <li><a href="estadisticas.php">Estadisticas</a></li>
+            <li><a href="mapa.php">Geolocalización</a></li>
             <li><a href="formPac.php">Ingresar Paciente</a></li>
             <li>
                 <form action="controles.php" method="post">

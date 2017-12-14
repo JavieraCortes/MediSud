@@ -26,6 +26,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>
+          <li><a href="mapa.php">Geolocalización</a></li>
           <li><a href="formPac.php">Ingresar Paciente</a></li> 
           <li><form action="formControl.php" method="post">
                   <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
@@ -143,21 +144,21 @@
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Complemento Diagnostico: </label>
                             <div class="col-xs-10">
-                                <textarea style="overflow: hidden" name="comdiag" rows="4" cols="98%" placeholder="Diagnostico Complementario"></textarea>
+                                <textarea style="overflow: hidden" name="comdiag" rows="2" cols="97%" placeholder="Diagnostico Complementario"></textarea>
                             </div>
                         </div>
                             
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Procedimiento Diagnostico: </label>
                             <div class="col-xs-10">
-                                <textarea style="overflow: hidden" name="procedimiento" rows="4" cols="98%" placeholder="Procedimiento Aplicado"></textarea>
+                                <textarea style="overflow: hidden" name="procedimiento" rows="2" cols="97%" placeholder="Procedimiento Aplicado"></textarea>
                             </div>
                         </div>
                             
                         <div class="form-group row">
                             <label class="col-xs-2 col-form-label">Indicaciones Medicas: </label>
                             <div class="col-xs-10">
-                                <textarea style="overflow: hidden" name="indicacion" rows="4" cols="98%" placeholder="Indicaciones Medicas a Seguir"></textarea>
+                                <textarea style="overflow: hidden" name="indicacion" rows="2" cols="97%" placeholder="Indicaciones Medicas a Seguir"></textarea>
                             </div>
                         </div>
                               

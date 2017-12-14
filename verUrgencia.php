@@ -27,6 +27,7 @@
 
         <li><a href="pacientes.php">Pacientes</a></li>
         <li><a href="estadisticas.php">Estadisticas</a></li>
+        <li><a href="mapa.php">Geolocalización</a></li>
         <li><a href="formPac.php">Ingresar Paciente</a></li>
 
           <li><form action="verControl.php" method="post">
@@ -70,10 +71,8 @@
                         if($result->num_rows>0){
                             while($row=$result->fetch_assoc()){
                         echo '
-                    <h2>Urgencia N°'. $row['codUrgencia'].'</h2>
-                    <p>Control Medico del paciente Rut: '.$row['run'].' </p>
-                    <p>Control Registrado en la Fecha y Hora: '.$row['fecha'].'</p>
-                    <img src="img/control.png" width="50">
+                    <h2><img src="img/control.png" width="22"> Urgencia N°'. $row['codUrgencia'].'</h2>
+                    <p>Control Medico del paciente Rut: '.$row['run'].' - Registrado en la Fecha y Hora: '.$row['fecha'].'</p>
                     <hr class="bottom-line">
                 </div>
                 

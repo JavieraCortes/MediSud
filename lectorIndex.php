@@ -31,6 +31,7 @@
 
     <section id ="contact" class="section-padding">
       <div class="container">
+          <br>
         <a href="index.php"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
     </div>     
     </section>
