@@ -107,6 +107,58 @@
                 }else{
                     echo '<center><h2>No hay controles registrados</h2></center>';
                 }
+                
+                echo '</div>
+            
+                        <div class="row">';
+          
+                $sql1="SELECT *FROM urgencia WHERE run=".$usu;
+                $result1=$conn->query($sql1);
+
+                if($result1->num_rows>0){
+                    
+                    echo '<br><div class="row">
+                                <div class="header-section text-center">
+                                    <h4><img src="img/urgencia.png" width="22"> Urgencias Medicas</h4>
+                                </div>
+                                <div class="feature-info">
+                                
+                                <table class="pacientes">
+                                <thead>
+                                <tr>
+                                <th>Fecha Urgencia</th>
+                                <th>Direccion Urgencia</th>
+                                <th>Temperatura</th>     
+                                <th>Pulso</th>
+                                <th>Frecuencia</th>
+                                <th>Presion</th>
+                                <th>Saturacion</th>
+                                <th>Ver Urgencia</th>
+                                </tr>
+                                </thead>
+                                <tbody>';
+                    
+                    while($row = $result1->fetch_assoc()){
+                        
+                        echo'<tr>
+                                <td>'. $row['fecha'] . '</td> 
+                                <td>'. $row['direccion'].'</td>                          
+                                <td>'.$row['temperatura'].'</td>
+                                <td>'. $row['pulso'] . '</td> 
+                                <td>'. $row['frespiratorio'].'</td>                          
+                                <td>'.$row['presion'].'</td>
+                                <td>'. $row['saturacion'] . '</td>                         
+                                <td>'. "<a href = 'verUrgencia.php?run=" . $usu. '& codUrgencia='. $row["codUrgencia"]."'>Ver Urgencia </a>".'</td>
+                            </tr>';
+                    }
+                            
+                    echo '</tbody></table>'
+                        . '</div>
+                        </div>';
+                }else{
+                    echo '<div style="text-align:center" ><h2>No hay urgencias medicas registradas.</h2></div>';
+                }
+                $conn->close();
             ?>
             </div>
               

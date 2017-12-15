@@ -25,7 +25,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="formPac.php">Ingresar Paciente</a></li>
+          <li><a href="formPac.php">Ingresar Paciente</a></li>
           <li><a href="pacientes.php">Pacientes</a></li>
           <li><a href="ProxControles.php">Proximos Controles</a></li>
           <li><a href="estadisticas.php">Estadisticas</a></li>

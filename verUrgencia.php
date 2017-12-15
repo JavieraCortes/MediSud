@@ -20,18 +20,36 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-            <a class="navbar-brand" href="acceso.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" />
+            <?php
+        
+            session_start();
+            if($_SESSION['tipo'] == 'Doctor'){
+                echo '<a class="navbar-brand" href="accesoMed.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" /> ';
+            }else{
+                echo '<a class="navbar-brand" href="accesoPac.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" />';
+            }
+            ?>  
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
+        <?php
+ 
+            if($_SESSION['tipo'] == 'Doctor'){
+                echo '<li><a href="formPac.php">Ingresar Paciente</a></li>
+                    <li><a href="pacientes.php">Pacientes</a></li>
+                    <li><a href="ProxControles.php">Proximos Controles</a></li>
+                    <li><a href="estadisticas.php">Estadisticas</a></li>
+                    <li><a href="mapa.php">Geolocalización</a></li> ';
+            }else{
+                echo '<li><a href="FichaPac.php">Mi Ficha</a></li>
+                     <li><a href="ControlesPac.php">Controles Realizados</a></li>
+                     <li><a href="ProxControlesPac.php">Proximos Controles</a></li>
+                     <li><a href="EstadisticasPac.php">Estadisticas</a></li>';
+            }
+                              
+           ?>
 
-        <li><a href="formPac.php">Ingresar Paciente</a></li>
-        <li><a href="pacientes.php">Pacientes</a></li>
-        <li><a href="ProxControles.php">Proximos Controles</a></li>
-        <li><a href="estadisticas.php">Estadisticas</a></li>
-        <li><a href="mapa.php">Geolocalización</a></li>
-
-          <li><form action="verControl.php" method="post">
+          <li><form action="verUrgencia.php" method="post">
                   <button type="submit" class="btn btn-green btn-block btn-flat" name="salir" style="margin-top:10%">Salir</button>
           </form>
           </li> 
@@ -44,22 +62,32 @@
     <section id ="feature" class="section-padding">
         <div class="container">
              <?php
-                    session_start();
+
                     
                     if(isset($_POST['salir'])){
                     session_destroy();
                     header('Location: index.php');
                     }
                     $rut=$_GET['run'];
-                    echo '<br><div class="row">
-                    <div class="col-md-1">
-                        <a href="controles.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
-                    </div>        
-                    <div class="col-md-11">
+                    
+                    echo '<br><div class="row">';
+                    
+                    if($_SESSION['tipo']=='Doctor'){
+                        echo '
+                        <div class="col-md-1">
+                            <a href="controles.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
+                        </div>'; 
+                    }else{
+                        echo '<div class="col-md-1">
+                            <a href="controlesPac.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
+                        </div>'; 
+                    }
+                          
+                    
+                    echo '<div class="col-md-11">
                         <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
                     </div>
-                </div>';  
-                    
+                </div>';       
                     ?>
             <div class="row">
                 <div class="header-section text-center">

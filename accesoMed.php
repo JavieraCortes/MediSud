@@ -84,7 +84,7 @@
                             <a href="formPac.php"><img src="img/ingresar.png" width="200"></a><br>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="geolocal.php"><img src="img/geolocalizacion.png" width="200"></a><br>
+                            <a href="mapa.php"><img src="img/geolocalizacion.png" width="200"></a><br>
                         </div>
                     </div>
                 </div>

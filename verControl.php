@@ -20,15 +20,22 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-            <a class="navbar-brand" href="acceso.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" />
+            
+        <?php
+        
+            session_start();
+            if($_SESSION['tipo'] == 'Doctor'){
+                echo '<a class="navbar-brand" href="accesoMed.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" /> ';
+            }else{
+                echo '<a class="navbar-brand" href="accesoPac.php">MEDI<span>SUD</span></a><img src="img/logo2.png" width="50" />';
+            }
+        ?>  
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
             
             <?php
-          
-            session_start();
-            
+ 
             if($_SESSION['tipo'] == 'Doctor'){
                 echo '<li><a href="formPac.php">Ingresar Paciente</a></li>
                     <li><a href="pacientes.php">Pacientes</a></li>
