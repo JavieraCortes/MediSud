@@ -63,11 +63,22 @@
                     header('Location: index.php');
                     }
                     $rut=$_GET['rut'];
-                    echo '<br><div class="row">
-                    <div class="col-md-1">
-                        <a href="controles.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
-                    </div>        
-                    <div class="col-md-11">
+                    
+                    echo '<br><div class="row">';
+                    
+                    if($_SESSION['tipo']=='Doctor'){
+                        echo '
+                        <div class="col-md-1">
+                            <a href="controles.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
+                        </div>'; 
+                    }else{
+                        echo '<div class="col-md-1">
+                            <a href="controlesPac.php?rut='.$rut.'"><button type="submit" class="btn btn-primary btn-xs"> < </button></a>
+                        </div>'; 
+                    }
+                          
+                    
+                    echo '<div class="col-md-11">
                         <p style="text-align:right"><img src="img/blue.png" width="20" />'.$_SESSION['nombre'].'</p>
                     </div>
                 </div>';       
