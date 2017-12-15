@@ -82,7 +82,7 @@
                                             <div class="col-lg-10">
 
                                                 <form id="form" method="post" class="form-horizontal mitad" action="agendarControl.php">
-
+                                                    <input type="hidden" value="'.$row['CodRFID'].'" name="cod">
                                                     <div class="form-group row">
                                                         <label class="col-xs-3 col-form-label">Nombre Paciente: </label>
                                                         <div class="col-xs-9">'
@@ -142,6 +142,7 @@
                             $fechaControl = date_create($_POST['fecha']);
                             $fechaControl = date_format($fechaControl, 'd-m-Y');
                             $horacontrol = $_POST['hora'];
+                            $tag = $_POST['cod'];
                             require "conexion.php";            
                             $sql= "insert into agendarcontrol values ('$name',$rutPac, '$nombreMed', '$fechaControl', '$horacontrol')";
                             $result = $conn->query($sql);
@@ -154,7 +155,7 @@
                             
                             
                             echo "<script language='javascript'>
-                                    window.location='pacientes.php';
+                                    window.location='ficha.php?tag=$tag';
                                     window.opener.location.reload();
                                     window.close();
                                   </script>";
