@@ -80,10 +80,13 @@
                         
                         
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="pacientes.php"><img src="img/paxid.png" width="200"></a><br>
+                            <a href="FichaPac.php"><img src="img/paxid.png" width="200"></a><br>
                         </div>
                         <div class="col-md-3 col-sm-3 col-xs-3">
-                            <a href="controlPac.php"><img src="img/miscontroles.png" width="150"></a><br>
+                            <a href="ControlesPac.php"><img src="img/miscontroles.png" width="150"></a><br>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <a href="EstadisticasPac.php"><img src="img/estadistica.png" width="200"></a><br>
                         </div>
                     </div>
                 </div>
